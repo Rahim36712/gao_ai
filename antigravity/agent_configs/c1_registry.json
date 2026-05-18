@@ -1,0 +1,61 @@
+{
+  "_doc": "AGENT C1 - REGISTRY AGENT - Beneficiary Validation - Gaon Guard AI",
+  "agent_id": "C1_REGISTRY",
+  "version": "0.1.0",
+  "engine": "AID_ACCOUNTABILITY",
+  "group": "C",
+  "sequence": 1,
+  "purpose": "Validate beneficiary entries. Reject duplicates, flag missing fields.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 1024,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a beneficiary registry validator for aid distribution. When a new beneficiary entry is submitted, check: (1) CNIC format: must match XXXXX-XXXXXXX-X pattern. (2) Duplicate CNIC: check against existing registry. (3) Required fields: all of [cnic, head_name, village_id, household_size, gps_home] must be present and non-null. (4) Household size: must be between 1 and 20. (5) Entitlement calculation: tents = min(1 per household, 1), ration_packs = household_size / 4 rounded up, cash_pkr = damage_level * 5000 (SEVERE=3, MODERATE=2, MILD=1). Return ONLY valid JSON: {valid: true/false, rejection_reasons[], calculated_entitlement, duplicate_detected: true/false, officer_flag: true/false}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "valid":                 {"type": "boolean"},
+      "rejection_reasons":     {"type": "array", "items": {"type": "string"}},
+      "calculated_entitlement": {
+        "type": "object",
+        "properties": {
+          "tents":        {"type": "number"},
+          "ration_packs": {"type": "number"},
+          "cash_pkr":     {"type": "number"}
+        }
+      },
+      "duplicate_detected":    {"type": "boolean"},
+      "officer_flag":          {"type": "boolean"}
+    },
+    "required": ["valid", "rejection_reasons", "duplicate_detected", "officer_flag"]
+  },
+
+  "validation_rules": {
+    "cnic_pattern": "XXXXX-XXXXXXX-X (5 digits, dash, 7 digits, dash, 1 digit)",
+    "required_fields": ["cnic", "head_name", "village_id", "household_size", "gps_home"],
+    "household_size_range": {"min": 1, "max": 20},
+    "entitlement_formula": {
+      "tents": "1 per household (max 1)",
+      "ration_packs": "ceil(household_size / 4)",
+      "cash_pkr": {"SEVERE": 15000, "MAJOR": 10000, "MODERATE": 10000, "MINOR": 5000}
+    }
+  },
+
+  "officer_flag_rule": "If same officer triggers 3+ rejections in one session, set officer_flag: true",
+
+  "tools_used": [
+    {"name": "get_beneficiaries", "endpoint": "GET /api/beneficiaries/{village_id}", "purpose": "Duplicate CNIC check"},
+    {"name": "send_notification", "endpoint": "POST /api/notify", "purpose": "Notify supervisor on duplicate or officer flag"}
+  ],
+
+  "handoff": {
+    "next_agent": "C2_AUDIT",
+    "passes": ["valid", "calculated_entitlement", "officer_flag"]
+  }
+}

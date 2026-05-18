@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+firebase-admin
+google-cloud-firestore
+google-genai
+requests

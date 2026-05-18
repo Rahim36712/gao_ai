@@ -1,0 +1,78 @@
+{
+  "_doc": "AGENT C2 - AUDIT AGENT - Statistical Anomaly Detection - Gaon Guard AI",
+  "agent_id": "C2_AUDIT",
+  "version": "0.1.0",
+  "engine": "AID_ACCOUNTABILITY",
+  "group": "C",
+  "sequence": 2,
+  "purpose": "Real-time statistical anomaly detection on distribution logs.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 1536,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are an aid distribution audit analyst. For each new distribution log entry, run these checks and return ONLY valid JSON {anomaly_flags[], escalation_required: true/false, escalation_brief, audit_status: PASS/ANOMALY/FRAUD_RISK}: (1) QUANTITY CHECK: calculate items_per_household = total_items_distributed / registered_households_in_village. If > 1.5x NDMA guideline (1 tent/household), flag QUANTITY_ANOMALY with calculation shown. (2) PRICE CHECK: for each item, compare invoice_price_pkr against market_prices.json flag_threshold. If invoice > flag_threshold, flag PRICE_ANOMALY with percentage over threshold. (3) REPEAT OFFICER CHECK: if same officer_id appears in more than 5 distribution entries in 24 hours, flag REPEAT_OFFICER. Generate escalation_brief as a 3-sentence summary of all anomalies for the District Officer if any flag fires.",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "anomaly_flags":        {"type": "array", "items": {"type": "string"}},
+      "escalation_required":  {"type": "boolean"},
+      "escalation_brief":     {"type": "string"},
+      "audit_status":         {"type": "string", "enum": ["PASS", "ANOMALY", "FRAUD_RISK"]}
+    },
+    "required": ["anomaly_flags", "escalation_required", "escalation_brief", "audit_status"]
+  },
+
+  "checks": {
+    "QUANTITY_CHECK": {
+      "ndma_guideline_tents_per_household": 1.0,
+      "flag_multiplier": 1.5,
+      "description": "If items_per_household > 1.5, flag QUANTITY_ANOMALY"
+    },
+    "PRICE_CHECK": {
+      "source": "GET /api/prices",
+      "description": "Compare invoice prices against flag_threshold_pkr from market_prices.json"
+    },
+    "REPEAT_OFFICER_CHECK": {
+      "threshold": 5,
+      "window_hours": 24,
+      "description": "Same officer_id in more than 5 distributions within 24 hours"
+    }
+  },
+
+  "escalation_rules": {
+    "ANOMALY": "1 flag fires",
+    "FRAUD_RISK": "2+ flags fire or QUANTITY_ANOMALY > 3x guideline"
+  },
+
+  "demo_scenario": {
+    "label": "Basti Malook 500 tents",
+    "input": {
+      "village_id": "VIL_002",
+      "total_tents": 500,
+      "registered_households": 120
+    },
+    "expected": {
+      "items_per_household": 4.17,
+      "ndma_guideline": 1.0,
+      "flag": "QUANTITY_ANOMALY",
+      "audit_status": "FRAUD_RISK"
+    }
+  },
+
+  "tools_used": [
+    {"name": "get_prices", "endpoint": "GET /api/prices"},
+    {"name": "get_beneficiaries", "endpoint": "GET /api/beneficiaries/{village_id}"},
+    {"name": "send_notification", "endpoint": "POST /api/notify"}
+  ],
+
+  "handoff": {
+    "next_agent": "C3_GEOVERIFY",
+    "passes": ["anomaly_flags", "audit_status", "escalation_required"]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "_doc": "AGENT A2 - EVIDENCE AGENT - Gaon Guard AI",
+  "agent_id": "A2_EVIDENCE",
+  "version": "0.1.0",
+  "engine": "CRISIS_INTELLIGENCE",
+  "group": "A",
+  "sequence": 2,
+  "purpose": "Cross-check A1 output against 5 mock data sources. Produce confidence score.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.1,
+    "max_output_tokens": 2048,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are an evidence verification analyst. Given a crisis event object and data from 5 mock APIs, determine whether each data source SUPPORTS, CONTRADICTS, or is NEUTRAL toward the claimed crisis. Then calculate an overall confidence level: HIGH (4-5 supporting), MEDIUM (2-3 supporting), LOW (0-1 supporting). Return ONLY valid JSON: {confidence: HIGH/MEDIUM/LOW, evidence_checks: [{source, value_retrieved, verdict: SUPPORTS/CONTRADICTS/NEUTRAL, justification}], overall_summary}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "confidence":       {"type": "string", "enum": ["HIGH", "MEDIUM", "LOW"]},
+      "evidence_checks":  {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "source":           {"type": "string"},
+            "value_retrieved":  {"type": "string"},
+            "verdict":          {"type": "string", "enum": ["SUPPORTS", "CONTRADICTS", "NEUTRAL"]},
+            "justification":    {"type": "string"}
+          }
+        }
+      },
+      "overall_summary":  {"type": "string"}
+    },
+    "required": ["confidence", "evidence_checks", "overall_summary"]
+  },
+
+  "tools_used": [
+    {
+      "name": "get_weather",
+      "endpoint": "GET /api/weather/{district}",
+      "description": "Check rainfall against flood claim",
+      "parallel": true
+    },
+    {
+      "name": "get_road_status",
+      "endpoint": "GET /api/roads/{village_id}",
+      "description": "Check road status",
+      "parallel": true
+    },
+    {
+      "name": "get_health_report",
+      "endpoint": "GET /api/health/{bhu_id}",
+      "description": "Check disease cases at nearest BHU",
+      "parallel": true
+    },
+    {
+      "name": "get_village",
+      "endpoint": "GET /api/villages/{village_id}",
+      "description": "Check risk zone and flood history",
+      "parallel": true
+    },
+    {
+      "name": "get_open_missing",
+      "endpoint": "GET /api/missing/open",
+      "description": "Check if any existing missing cases match the area",
+      "parallel": true
+    }
+  ],
+
+  "conflict_rules": [
+    {
+      "condition": "rainfall_mm_24hr == 0 AND crisis_type contains FLOOD",
+      "verdict": "CONTRADICTS",
+      "justification_template": "Weather data shows 0mm rainfall but complaint claims flooding"
+    },
+    {
+      "condition": "road_status == OPEN AND crisis_type contains ROAD",
+      "verdict": "CONTRADICTS",
+      "justification_template": "Road status shows OPEN but complaint claims road blockage"
+    }
+  ],
+
+  "handoff": {
+    "next_agent": "A3_SEVERITY",
+    "passes": ["confidence", "evidence_checks", "overall_summary"]
+  }
+}

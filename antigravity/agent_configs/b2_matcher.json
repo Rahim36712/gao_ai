@@ -1,0 +1,79 @@
+{
+  "_doc": "AGENT B2 - MATCHER AGENT - Missing Person Cross-Matching - Gaon Guard AI",
+  "agent_id": "B2_MATCHER",
+  "version": "0.1.0",
+  "engine": "MISSING_PERSONS",
+  "group": "B",
+  "sequence": 2,
+  "purpose": "Cross-match open missing person cases against unidentified camp registrations.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a missing person matching analyst. Compare each open missing person case against all UNIDENTIFIED camp registration records. Score each pair on three dimensions: (1) Age range overlap: if abs(missing_age - camp_approx_age) <= 3, score 30 points. If <= 6, score 15 points. Else 0. (2) Village proximity: use Haversine formula. Score 40 points at 0km, sliding to 0 points at 20km. (3) Description similarity: compare clothing color, hair, height keywords. Score 0-30 points based on overlap. Total score = sum of all three dimensions (max 100). If total score > 70: send family alert. If 40-70: queue for human review. If < 40: no action. Return ONLY valid JSON: {matches: [{missing_id, camp_reg_id, score, age_points, proximity_points, desc_points, action: ALERT/REVIEW/NO_ACTION, alert_message}]}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "matches": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "missing_id":      {"type": "string"},
+            "camp_reg_id":     {"type": "string"},
+            "score":           {"type": "number"},
+            "age_points":      {"type": "number"},
+            "proximity_points":{"type": "number"},
+            "desc_points":     {"type": "number"},
+            "action":          {"type": "string", "enum": ["ALERT", "REVIEW", "NO_ACTION"]},
+            "alert_message":   {"type": "string"}
+          }
+        }
+      }
+    },
+    "required": ["matches"]
+  },
+
+  "scoring_formula": {
+    "age_overlap": {"within_3_years": 30, "within_6_years": 15, "beyond_6_years": 0},
+    "proximity": {"formula": "max(0, 40 * (1 - distance_km / 20))", "max_distance_km": 20},
+    "description": {"max_points": 30, "factors": ["clothing_color", "hair", "height", "gender", "build"]}
+  },
+
+  "action_thresholds": {
+    "ALERT": {"min_score": 71, "action": "Send family alert via POST /api/notify"},
+    "REVIEW": {"min_score": 40, "max_score": 70, "action": "Queue for human review"},
+    "NO_ACTION": {"max_score": 39}
+  },
+
+  "tools_used": [
+    {"name": "get_open_missing", "endpoint": "GET /api/missing/open"},
+    {"name": "get_unidentified_camps", "endpoint": "GET /api/camps/unidentified"},
+    {"name": "send_notification", "endpoint": "POST /api/notify"}
+  ],
+
+  "demo_scenario": {
+    "match_pair": {
+      "missing": "Hassan Ali, age 12, Ali Pur (27.5580, 68.2120), blue shalwar kameez, black hair, 4ft5in",
+      "camp": "CAMP_REG_020, approx_age 11, Camp Larkana 01 (27.5700, 68.1950), blue shalwar kameez, black hair, thin build",
+      "expected_score": {
+        "age_points": 30,
+        "proximity_points": 38,
+        "desc_points": 25,
+        "total": 93,
+        "action": "ALERT"
+      }
+    }
+  },
+
+  "handoff": {
+    "next_agent": "B3_CLUSTER",
+    "passes": ["matches with action ALERT or REVIEW"]
+  }
+}

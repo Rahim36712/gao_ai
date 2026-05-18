@@ -1,0 +1,61 @@
+{
+  "_doc": "AGENT B3 - CLUSTER AGENT - Missing Person Cluster Detection - Gaon Guard AI",
+  "agent_id": "B3_CLUSTER",
+  "version": "0.1.0",
+  "engine": "MISSING_PERSONS",
+  "group": "B",
+  "sequence": 3,
+  "purpose": "Detect geographic clusters of 3+ missing persons from the same area.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 1024,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a missing person cluster analyst. Given all open missing person cases, identify clusters: any group of 3 or more cases where last_seen_village_id values are within a 30km radius of each other. For each cluster found: generate a Cluster Alert brief containing {cluster_id, village_ids[], case_count, centroid_lat, centroid_lng, recommended_action, alert_recipients: [RESCUE_1122, DISTRICT_OFFICER]}. Return ONLY valid JSON: {clusters_found: number, clusters: [ClusterAlert]}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "clusters_found": {"type": "number"},
+      "clusters": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "cluster_id":          {"type": "string"},
+            "village_ids":         {"type": "array", "items": {"type": "string"}},
+            "case_count":          {"type": "number"},
+            "centroid_lat":        {"type": "number"},
+            "centroid_lng":        {"type": "number"},
+            "recommended_action":  {"type": "string"},
+            "alert_recipients":    {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "required": ["clusters_found", "clusters"]
+  },
+
+  "cluster_params": {
+    "min_cases": 3,
+    "radius_km": 30,
+    "algorithm": "Haversine pairwise distance, single-linkage clustering"
+  },
+
+  "trigger": "Runs whenever a new missing person case is created OR when B2 updates a case status",
+
+  "tools_used": [
+    {"name": "get_open_missing", "endpoint": "GET /api/missing/open"},
+    {"name": "get_village", "endpoint": "GET /api/villages/{village_id}"},
+    {"name": "send_notification", "endpoint": "POST /api/notify"}
+  ],
+
+  "handoff": {
+    "next_agent": null,
+    "output_to": "Firestore notifications_log + crisis_events (if cluster severity warrants)"
+  }
+}

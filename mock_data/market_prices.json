@@ -1,0 +1,13 @@
+[
+  {"_comment": "SYNTHETIC DEMO DATA — Gaon Guard AI Hackathon"},
+  {"item": "tent_standard", "unit": "per_unit", "market_rate_pkr": 1800, "govt_guideline_pkr": 2000, "flag_threshold_pkr": 2800, "source": "SYNTHETIC"},
+  {"item": "ration_pack_family", "unit": "per_pack", "market_rate_pkr": 3500, "govt_guideline_pkr": 4000, "flag_threshold_pkr": 5500, "source": "SYNTHETIC"},
+  {"item": "water_purification_tablets", "unit": "per_100", "market_rate_pkr": 250, "govt_guideline_pkr": 300, "flag_threshold_pkr": 450, "source": "SYNTHETIC"},
+  {"item": "tarpaulin_sheet", "unit": "per_sheet", "market_rate_pkr": 800, "govt_guideline_pkr": 1000, "flag_threshold_pkr": 1500, "source": "SYNTHETIC"},
+  {"item": "mosquito_net", "unit": "per_unit", "market_rate_pkr": 350, "govt_guideline_pkr": 400, "flag_threshold_pkr": 600, "source": "SYNTHETIC"},
+  {"item": "hygiene_kit", "unit": "per_kit", "market_rate_pkr": 1200, "govt_guideline_pkr": 1500, "flag_threshold_pkr": 2200, "source": "SYNTHETIC"},
+  {"item": "blanket_wool", "unit": "per_unit", "market_rate_pkr": 600, "govt_guideline_pkr": 750, "flag_threshold_pkr": 1100, "source": "SYNTHETIC"},
+  {"item": "cooking_stove_portable", "unit": "per_unit", "market_rate_pkr": 1500, "govt_guideline_pkr": 1800, "flag_threshold_pkr": 2600, "source": "SYNTHETIC"},
+  {"item": "jerry_can_20l", "unit": "per_unit", "market_rate_pkr": 450, "govt_guideline_pkr": 500, "flag_threshold_pkr": 750, "source": "SYNTHETIC"},
+  {"item": "ors_sachet", "unit": "per_50", "market_rate_pkr": 200, "govt_guideline_pkr": 250, "flag_threshold_pkr": 400, "source": "SYNTHETIC"}
+]

@@ -1,0 +1,71 @@
+{
+  "_doc": "AGENT A3 - SEVERITY AGENT - Gaon Guard AI",
+  "agent_id": "A3_SEVERITY",
+  "version": "0.1.0",
+  "engine": "CRISIS_INTELLIGENCE",
+  "group": "A",
+  "sequence": 3,
+  "purpose": "Apply weighted scoring to evidence summary. Produce severity 1-5 and dispatch authorization.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 1024,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a crisis severity analyst. Apply this exact weighted scoring to the evidence summary: standing_water=1, road_blocked=1, children_affected=1.5, disease_present=2, crop_damage=1, deaths_reported=3, missing_persons_detected=1.5. Cap at 5. Return ONLY valid JSON: {severity_score: 1-5, weight_breakdown: {signal: weight}[], total_raw_score, authorization: DISPATCH_AUTHORIZED/HOLD_COORDINATOR_REVIEW, must_verify: true/false, reasoning}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "severity_score":   {"type": "number", "minimum": 1, "maximum": 5},
+      "weight_breakdown": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "signal": {"type": "string"},
+            "weight": {"type": "number"}
+          }
+        }
+      },
+      "total_raw_score":  {"type": "number"},
+      "authorization":    {"type": "string", "enum": ["DISPATCH_AUTHORIZED", "HOLD_COORDINATOR_REVIEW"]},
+      "must_verify":      {"type": "boolean"},
+      "reasoning":        {"type": "string"}
+    },
+    "required": ["severity_score", "weight_breakdown", "total_raw_score", "authorization", "must_verify", "reasoning"]
+  },
+
+  "scoring_weights": {
+    "standing_water": 1.0,
+    "road_blocked": 1.0,
+    "children_affected": 1.5,
+    "disease_present": 2.0,
+    "crop_damage": 1.0,
+    "deaths_reported": 3.0,
+    "missing_persons_detected": 1.5
+  },
+
+  "rules": [
+    {
+      "id": "LOW_CONFIDENCE_HOLD",
+      "condition": "confidence == LOW",
+      "action": "authorization must be HOLD_COORDINATOR_REVIEW regardless of score"
+    },
+    {
+      "id": "CONTRADICTS_FLAG",
+      "condition": "any evidence_check.verdict == CONTRADICTS",
+      "action": "must_verify must be true"
+    }
+  ],
+
+  "tools_used": [],
+
+  "handoff": {
+    "next_agent": null,
+    "output_to": "crisis_events collection (update severity_score and status)"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "_doc": "AGENT B1 - SCANNER AGENT - Missing Person Signal Detection - Gaon Guard AI",
+  "agent_id": "B1_SCANNER",
+  "version": "0.1.0",
+  "engine": "MISSING_PERSONS",
+  "group": "B",
+  "sequence": 1,
+  "purpose": "Passively scan every incoming complaint for missing-person signals across 3 languages.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.5-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 512,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a missing person signal detector. Scan the input text for any of these keyword patterns in Urdu, Roman Urdu, or English: [gum ho gaya, gum ho gayi, nazar nahi aa raha, nazar nahi aa rahi, dhundhna hai, kho gaya, kho gayi, missing, pata nahi, laapta, bacha nahi mila, nahi mili, kho gaye]. If any pattern is detected, extract: {signal_detected: true, extracted_name (if mentioned, else null), extracted_age_estimate (if mentioned, else null), last_seen_location (if mentioned, else null), keyword_matched, confidence: HIGH/MEDIUM/LOW}. If no pattern: {signal_detected: false}. Return ONLY valid JSON.",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "signal_detected":       {"type": "boolean"},
+      "extracted_name":        {"type": ["string", "null"]},
+      "extracted_age_estimate": {"type": ["number", "null"]},
+      "last_seen_location":    {"type": ["string", "null"]},
+      "keyword_matched":       {"type": ["string", "null"]},
+      "confidence":            {"type": ["string", "null"], "enum": ["HIGH", "MEDIUM", "LOW", null]}
+    },
+    "required": ["signal_detected"]
+  },
+
+  "keyword_patterns": [
+    "gum ho gaya", "gum ho gayi",
+    "nazar nahi aa raha", "nazar nahi aa rahi",
+    "dhundhna hai", "kho gaya", "kho gayi",
+    "missing", "pata nahi", "laapta",
+    "bacha nahi mila", "nahi mili", "kho gaye"
+  ],
+
+  "trigger": "Runs on EVERY complaint that A1 processes, regardless of crisis type",
+
+  "on_detection": {
+    "action": "Create draft in Firestore missing_persons_live with status OPEN",
+    "notify": false
+  },
+
+  "test_inputs": [
+    {
+      "label": "Ali Pur demo (Roman Urdu with missing signal)",
+      "text": "Ali Pur mein 2 din se pani khara hai, bachay diarrhea se beemar hain aur bacha nazar nahi aa raha",
+      "expected": {"signal_detected": true, "keyword_matched": "nazar nahi aa raha", "last_seen_location": "Ali Pur", "confidence": "HIGH"}
+    },
+    {
+      "label": "No missing person signal",
+      "text": "Basti Malook mein barish bohat zyada hai, fasal kharab ho gayi",
+      "expected": {"signal_detected": false}
+    }
+  ],
+
+  "handoff": {
+    "next_agent": "B2_MATCHER (if signal_detected)",
+    "passes": ["extracted_name", "extracted_age_estimate", "last_seen_location", "keyword_matched"]
+  }
+}
