@@ -1,0 +1,236 @@
+{
+  "_doc": "Gaon Guard AI - Antigravity Agent Trace Export",
+  "_note": "ALL DATA IS SYNTHETIC DEMO DATA",
+  "export_timestamp": "2026-05-18T15:26:26.330064+00:00",
+  "total_traces": 20,
+  "edge_cases_triggered": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "traces": [
+    {
+      "id": "TRACE_C7210657",
+      "agent": "A1_INTAKE",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329908+00:00",
+      "summary": "Extracted FLOOD, HEALTH signals for Ali Pur",
+      "reasoning": "Parsed Roman Urdu: 'pani khara hai' -> FLOOD, 'diarrhea' -> HEALTH",
+      "decision": "SIGNALS_EXTRACTED",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_2B784484",
+      "agent": "A2_EVIDENCE",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329927+00:00",
+      "summary": "Checked 5 sources. Weather shows 0mm rainfall — CONTRADICTS flood claim.",
+      "reasoning": "Rainfall: 0mm (CONTRADICTS). Road: Blocked (SUPPORTS). Health: Diarrhea spike (SUPPORTS). Crop: Harvest season (NEUTRAL). Nearby: 1 similar report (SUPPORTS). Result: 4/5 support but weather is a critical contradiction.",
+      "decision": "CONFIDENCE_MEDIUM",
+      "tool_calls": 5,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_E63EA0A8",
+      "agent": "X_COORDINATOR",
+      "group": "X",
+      "timestamp": "2026-05-18T15:26:26.329934+00:00",
+      "summary": "ARBITRATION: A1 says FLOOD but weather shows 0mm rainfall",
+      "reasoning": "Hypothesis 1: Weather station data lag — PMD station last updated 6hrs ago, possible delay in flood-affected area. Hypothesis 2: Irrigation canal breach — not rain-based flooding, canal overflow from upstream release at Sukkur Barrage. Hypothesis 3: Exaggerated report — complainant may be describing waterlogging from poor drainage, not active flooding. Decision: REQUEST_VERIFICATION. SMS sent to Focal Person at Ali Pur: 'Unverified flood report — can you confirm? Reply 1=Yes 2=No'. Timeout: 20 minutes. If no reply, escalate to District Officer.",
+      "decision": "REQUEST_VERIFICATION",
+      "tool_calls": 0,
+      "is_arbitration": true
+    },
+    {
+      "id": "TRACE_7383ECC0",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329938+00:00",
+      "summary": "Dispatch HELD pending coordinator verification",
+      "reasoning": "Authorization status: HOLD. Coordinator X has flagged weather contradiction. Teams remain on standby. Will auto-dispatch if verification confirms within 20min.",
+      "decision": "DISPATCH_HELD",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_B2AD2D64",
+      "agent": "A1_INTAKE",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329952+00:00",
+      "summary": "Extracted FLOOD signal but location_name is NULL",
+      "reasoning": "Input: 'Hamare gaon mein pani khara hai'. Parsed successfully but no village name, district, or GPS coordinates found. location_name: null, district_guess: null.",
+      "decision": "SIGNALS_EXTRACTED_INCOMPLETE",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_9DECD024",
+      "agent": "A3_SEVERITY",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329957+00:00",
+      "summary": "Cannot score — LOCATION_REQUIRED",
+      "reasoning": "Severity scoring requires village coordinates for distance calculations, risk zone lookup, and team assignment. Without location, scoring is impossible. Authorization: HOLD. Reason: LOCATION_REQUIRED.",
+      "decision": "HOLD_LOCATION_REQUIRED",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_90BB9611",
+      "agent": "C1_REGISTRY",
+      "group": "C",
+      "timestamp": "2026-05-18T15:26:26.329974+00:00",
+      "summary": "DUPLICATE CNIC 42101-1234567-1 detected — entry BLOCKED",
+      "reasoning": "CNIC 42101-1234567-1 already registered to Abdul Rehman in VIL_002 (Basti Malook). Second registration attempt by 'Muhammad Aslam' for same CNIC. duplicate_detected: true, valid: false. Distribution blocked.",
+      "decision": "BLOCKED_DUPLICATE",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_2849DAE3",
+      "agent": "C2_AUDIT",
+      "group": "C",
+      "timestamp": "2026-05-18T15:26:26.329979+00:00",
+      "summary": "Officer TEAM_004 flagged — 3rd duplicate attempt",
+      "reasoning": "Officer TEAM_004 has submitted 3 duplicate CNICs in the last 24 hours. Pattern suggests intentional double-registration for aid diversion. officer_flag: true. Supervisor notification triggered.",
+      "decision": "OFFICER_FLAGGED",
+      "tool_calls": 1,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_591FCFE2",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329991+00:00",
+      "summary": "Ticket TKT_106C created — Rescue 1122 Alpha assigned to Ali Pur",
+      "reasoning": "Nearest DISASTER team: Rescue 1122 Alpha (12.4km, ETA 25min). Ticket status: ASSIGNED. GPS monitoring started.",
+      "decision": "TICKET_CREATED",
+      "tool_calls": 1,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_FDA55564",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.329996+00:00",
+      "summary": "Ticket TKT_106C — Team ACCEPTED",
+      "reasoning": "Rescue 1122 Alpha acknowledged dispatch. Status: ACCEPTED. Expected departure: immediate. GPS baseline: 27.5560, 68.3690 (depot).",
+      "decision": "STATUS_ACCEPTED",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_8F7F6B62",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330006+00:00",
+      "summary": "NON-MOVEMENT DETECTED — Ticket TKT_106C",
+      "reasoning": "GPS check at T+30min: team still at 27.5560, 68.3690 (depot coordinates). No movement detected in 25 minutes since acceptance. Action: Reminder SMS sent to team lead. Escalation timer started (30min).",
+      "decision": "REMINDER_SENT",
+      "tool_calls": 1,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_F55925DA",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330011+00:00",
+      "summary": "ESCALATION — Ticket TKT_106C escalated to District Officer",
+      "reasoning": "T+60min: Team still at depot. Reminder ignored. Escalating to Coordinator X and District Officer. Original team flagged for review.",
+      "decision": "ESCALATED",
+      "tool_calls": 2,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_5095C232",
+      "agent": "X_COORDINATOR",
+      "group": "X",
+      "timestamp": "2026-05-18T15:26:26.330015+00:00",
+      "summary": "ARBITRATION: Team non-response — reassigning",
+      "reasoning": "Rescue 1122 Alpha has failed to respond for 60 minutes. Identifying next nearest team. Mobile Med Unit 3 is 18.2km from Ali Pur (ETA 35min). Decision: Reassign to Mobile Med Unit 3. Flag original team for disciplinary review.",
+      "decision": "REASSIGN_TEAM",
+      "tool_calls": 0,
+      "is_arbitration": true
+    },
+    {
+      "id": "TRACE_1E31BA5A",
+      "agent": "A4_DISPATCH",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330022+00:00",
+      "summary": "New ticket TKT_F0FB — Mobile Med Unit 3 assigned",
+      "reasoning": "Original ticket TKT_106C status: ESCALATED. New ticket TKT_F0FB created for Mobile Med Unit 3. ETA: 35min.",
+      "decision": "REASSIGNED",
+      "tool_calls": 1,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_0447DFD6",
+      "agent": "A1_INTAKE",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330029+00:00",
+      "summary": "Minimal extraction from 'Flood hai' — no location, no detail",
+      "reasoning": "Input: 'Flood hai'. Extracted: crisis_type: [FLOOD], location_name: null, district_guess: null, duration_hours: null, affected_group: null. Very low signal density.",
+      "decision": "SIGNALS_MINIMAL",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_ED919051",
+      "agent": "A2_EVIDENCE",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330033+00:00",
+      "summary": "All 5 sources returned NEUTRAL — no corroboration",
+      "reasoning": "Without a location, evidence checks returned generic results. Rainfall: NEUTRAL (no location to check). Road: NEUTRAL. Health: NEUTRAL. Crop: NEUTRAL. Nearby: No matching reports found. Confidence: LOW (0 SUPPORTS, 0 CONTRADICTS, 5 NEUTRAL).",
+      "decision": "CONFIDENCE_LOW",
+      "tool_calls": 5,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_3B9DA5F2",
+      "agent": "A3_SEVERITY",
+      "group": "A",
+      "timestamp": "2026-05-18T15:26:26.330037+00:00",
+      "summary": "INSUFFICIENT_EVIDENCE — cannot authorize dispatch",
+      "reasoning": "Severity cannot be calculated: no location for risk zone lookup, no corroborating evidence, single vague report. Authorization: HOLD. Status: WATCHLIST. Watchlist rule: if 2+ similar reports from nearby villages in 2 hours, auto-upgrade.",
+      "decision": "HOLD_INSUFFICIENT",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_44B299FA",
+      "agent": "B1_SCANNER",
+      "group": "B",
+      "timestamp": "2026-05-18T15:26:26.330047+00:00",
+      "summary": "Missing person signal detected in complaint",
+      "reasoning": "Keyword match: 'bacha nazar nahi aa raha' -> missing_person_signal: true. Extracted: male, approx age 12, last seen Ali Pur.",
+      "decision": "SIGNAL_DETECTED",
+      "tool_calls": 0,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_076E8946",
+      "agent": "B2_MATCHER",
+      "group": "B",
+      "timestamp": "2026-05-18T15:26:26.330051+00:00",
+      "summary": "Partial match found — 52% confidence (below 70% threshold)",
+      "reasoning": "Compared against 20 camp registrations. Best match: CAMP_REG_015. Age score: 15/30 (reported 12, camp record 17 — 5 year gap). Proximity score: 25/40 (camp is 22km from last seen location). Description score: 12/30 (partial match on 'dark hair' only). Total: 52/100. Action: REVIEW (below 70 threshold for auto-alert). No family notification sent.",
+      "decision": "REVIEW_REQUIRED",
+      "tool_calls": 2,
+      "is_arbitration": false
+    },
+    {
+      "id": "TRACE_55413D60",
+      "agent": "B2_MATCHER",
+      "group": "B",
+      "timestamp": "2026-05-18T15:26:26.330055+00:00",
+      "summary": "Operator notification sent — manual review required",
+      "reasoning": "Score 52% is in REVIEW range (50-69). Auto-alert suppressed to prevent false hope for families. Operator must visually confirm before any contact. Notification: 'Possible match for Hassan Ali — 52% — Manual review required'.",
+      "decision": "OPERATOR_NOTIFIED",
+      "tool_calls": 1,
+      "is_arbitration": false
+    }
+  ]
+}
