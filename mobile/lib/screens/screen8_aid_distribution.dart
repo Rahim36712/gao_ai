@@ -45,7 +45,7 @@ class _Screen8AidDistributionState extends State<Screen8AidDistribution> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('All entries are audited in real time by Agent C2', style: TextStyle(color: Colors.grey[600], fontStyle: FontStyle.italic)),
+            Text('All entries are audited in real time by Agent C2', style: TextStyle(color: AppTheme.textSecondary, fontStyle: FontStyle.italic)),
             const SizedBox(height: 24),
 
             // Beneficiary Verification

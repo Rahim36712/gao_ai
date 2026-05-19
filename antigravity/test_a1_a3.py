@@ -28,7 +28,7 @@ from google.genai import types
 
 API_BASE = os.environ.get("API_BASE", "http://localhost:8000")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-2.0-flash"
 
 CONFIGS_DIR = Path(__file__).resolve().parent / "agent_configs"
 OUTPUT_DIR = Path(__file__).resolve().parent / "test_outputs"
@@ -53,23 +53,8 @@ def load_agent_config(filename: str) -> dict:
         return json.load(f)
 
 
-def call_gemini(client: genai.Client, system_prompt: str, user_prompt: str, config: dict) -> dict:
-    """Call Gemini API and return parsed JSON response."""
-    response = client.models.generate_content(
-        model=config["model"]["model_name"],
-        contents=user_prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=system_prompt,
-            temperature=config["model"]["temperature"],
-            max_output_tokens=config["model"]["max_output_tokens"],
-            response_mime_type=config["model"]["response_mime_type"],
-        ),
-    )
-    text = response.text.strip()
-    if text.startswith("`json"): text = text[7:]
-    if text.startswith("`"): text = text[3:]
-    if text.endswith("`"): text = text[:-3]
-    return json.loads(text.strip())
+from gemini_utils import call_gemini
+from pretty_print import print_a1, print_a2, print_a3, print_summary, print_header, print_agent_header
 
 
 def api_get(path: str) -> dict:
@@ -111,11 +96,8 @@ def post_trace(agent_id: str, crisis_event_id: str, input_summary: str,
 
 def run_a1(client: genai.Client, complaint: str) -> dict:
     """Run Agent A1: parse complaint into structured signals."""
-    print("\n" + "=" * 60)
-    print("  AGENT A1 - INTAKE AGENT")
-    print("=" * 60)
+    print_agent_header("A1", "INTAKE AGENT")
     print(f"  Input: {complaint}")
-    print("-" * 60)
 
     config = load_agent_config("a1_intake.json")
     t0 = time.time()
@@ -128,8 +110,7 @@ def run_a1(client: genai.Client, complaint: str) -> dict:
     )
 
     latency = time.time() - t0
-    print(f"\n  A1 Output ({latency:.2f}s):")
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print_a1(result, latency)
 
     # Post trace
     post_trace(
@@ -154,9 +135,7 @@ def run_a1(client: genai.Client, complaint: str) -> dict:
 
 def run_a2(client: genai.Client, a1_output: dict) -> dict:
     """Run Agent A2: cross-check against 5 data sources."""
-    print("\n" + "=" * 60)
-    print("  AGENT A2 - EVIDENCE AGENT")
-    print("=" * 60)
+    print_agent_header("A2", "EVIDENCE AGENT")
 
     config = load_agent_config("a2_evidence.json")
     t0 = time.time()
@@ -216,8 +195,7 @@ def run_a2(client: genai.Client, a1_output: dict) -> dict:
     )
 
     latency = time.time() - t0
-    print(f"\n  A2 Output ({latency:.2f}s):")
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print_a2(result, latency)
 
     # Post trace
     post_trace(
@@ -242,9 +220,7 @@ def run_a2(client: genai.Client, a1_output: dict) -> dict:
 
 def run_a3(client: genai.Client, a1_output: dict, a2_output: dict) -> dict:
     """Run Agent A3: weighted scoring and dispatch authorization."""
-    print("\n" + "=" * 60)
-    print("  AGENT A3 - SEVERITY AGENT")
-    print("=" * 60)
+    print_agent_header("A3", "SEVERITY AGENT")
 
     config = load_agent_config("a3_severity.json")
     t0 = time.time()
@@ -265,8 +241,7 @@ def run_a3(client: genai.Client, a1_output: dict, a2_output: dict) -> dict:
     )
 
     latency = time.time() - t0
-    print(f"\n  A3 Output ({latency:.2f}s):")
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print_a3(result, latency)
 
     # Post trace
     post_trace(
@@ -308,12 +283,8 @@ def run_a3(client: genai.Client, a1_output: dict, a2_output: dict) -> dict:
 # ══════════════════════════════════════════════
 
 def main():
-    print("\n" + "#" * 60)
-    print("  GAON GUARD AI - Crisis Intelligence Pipeline Test")
-    print("  Agents: A1 (Intake) -> A2 (Evidence) -> A3 (Severity)")
-    print("  Demo: Ali Pur Flood Crisis")
-    print("  Data: ALL SYNTHETIC")
-    print("#" * 60)
+    print_header("GAON GUARD AI — Crisis Intelligence Pipeline",
+                  "A1 (Intake) → A2 (Evidence) → A3 (Severity)")
 
     # Validate API is running
     try:
@@ -347,22 +318,8 @@ def main():
     total_latency = time.time() - total_start
 
     # -- Summary --
-    print("\n" + "=" * 60)
-    print("  PIPELINE SUMMARY")
-    print("=" * 60)
-    print(f"  A1 Latency: {a1_result['latency_s']:.2f}s")
-    print(f"  A2 Latency: {a2_result['latency_s']:.2f}s")
-    print(f"  A3 Latency: {a3_result['latency_s']:.2f}s")
-    print(f"  Total:      {total_latency:.2f}s")
-    print()
-    print(f"  Location:      {a1_result['output'].get('location_name')}")
-    print(f"  Crisis Types:  {a1_result['output'].get('crisis_type')}")
-    print(f"  Missing Child: {a1_result['output'].get('missing_person_signal')}")
-    print(f"  Confidence:    {a2_result['output'].get('confidence')}")
-    print(f"  Severity:      {a3_result['output'].get('severity_score')}/5")
-    print(f"  Authorization: {a3_result['output'].get('authorization')}")
-    print(f"  Must Verify:   {a3_result['output'].get('must_verify')}")
-    print("=" * 60)
+    print_summary(a1_result["output"], a2_result["output"], a3_result["output"],
+                   a1_result["latency_s"], a2_result["latency_s"], a3_result["latency_s"])
 
     # -- Save trace --
     trace_output = {

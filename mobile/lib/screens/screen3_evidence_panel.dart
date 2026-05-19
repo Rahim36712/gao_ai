@@ -4,57 +4,28 @@ import '../theme.dart';
 import 'screen4_severity_dashboard.dart';
 
 class Screen3EvidencePanel extends StatefulWidget {
-  const Screen3EvidencePanel({super.key});
+  final Map<String, dynamic> analysisResult;
+  const Screen3EvidencePanel({super.key, required this.analysisResult});
 
   @override
   State<Screen3EvidencePanel> createState() => _Screen3EvidencePanelState();
 }
 
 class _Screen3EvidencePanelState extends State<Screen3EvidencePanel> {
-  final List<Map<String, dynamic>> _evidenceItems = [
-    {
-      'source': 'Rainfall Data',
-      'value': '0mm in last 24h',
-      'verdict': 'CONTRADICTS',
-      'justification': 'Weather data shows 0mm rainfall but complaint claims flooding.',
-      'icon': Icons.water_drop,
-    },
-    {
-      'source': 'Road Status',
-      'value': 'Blocked',
-      'verdict': 'SUPPORTS',
-      'justification': 'Main road to Ali Pur is confirmed blocked, consistent with flood claim.',
-      'icon': Icons.add_road,
-    },
-    {
-      'source': 'Health Reports',
-      'value': 'Diarrhea Cases: 12',
-      'verdict': 'SUPPORTS',
-      'justification': 'Health spike supports contaminated water from flooding.',
-      'icon': Icons.local_hospital,
-    },
-    {
-      'source': 'Crop Calendar',
-      'value': 'Harvest Season',
-      'verdict': 'NEUTRAL',
-      'justification': 'Harvest season is ongoing, neither confirms nor denies flooding.',
-      'icon': Icons.grass,
-    },
-    {
-      'source': 'Nearby Reports',
-      'value': 'Missing Child Reported',
-      'verdict': 'SUPPORTS',
-      'justification': 'Missing person report corroborates crisis in area.',
-      'icon': Icons.campaign,
-    },
-  ];
-
   int _visibleCount = 0;
   bool _showConfidence = false;
+
+  late final List<Map<String, dynamic>> _evidenceItems;
+  late final String _confidence;
+  late final bool _hasConflict;
 
   @override
   void initState() {
     super.initState();
+    final a2 = widget.analysisResult['a2_evidence'] as Map<String, dynamic>;
+    _confidence = a2['confidence'] ?? 'MEDIUM';
+    _hasConflict = a2['has_conflict'] == true;
+    _evidenceItems = List<Map<String, dynamic>>.from(a2['evidence_checks'] ?? []);
     _animateEvidence();
   }
 
@@ -70,84 +41,83 @@ class _Screen3EvidencePanelState extends State<Screen3EvidencePanel> {
   }
 
   Widget _buildVerdictBadge(String verdict) {
-    Color color;
-    switch (verdict) {
-      case 'SUPPORTS': color = AppTheme.successEmerald; break;
-      case 'CONTRADICTS': color = AppTheme.alertCrimson; break;
-      default: color = Colors.grey; break;
-    }
+    final color = {
+      'SUPPORTS': AppTheme.successEmerald,
+      'CONTRADICTS': AppTheme.alertCrimson,
+      'NEUTRAL': AppTheme.textSecondary,
+    }[verdict] ?? AppTheme.textSecondary;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(4)),
-      child: Text(verdict, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.bold)),
+      decoration: BoxDecoration(color: color, borderRadius: BorderRadius.circular(6)),
+      child: Text(verdict, style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
     );
+  }
+
+  IconData _sourceIcon(String source) {
+    if (source.contains('Rain') || source.contains('Weather')) return Icons.water_drop;
+    if (source.contains('Road')) return Icons.add_road;
+    if (source.contains('Health')) return Icons.local_hospital;
+    if (source.contains('Crop') || source.contains('Calendar')) return Icons.grass;
+    if (source.contains('Missing') || source.contains('Nearby')) return Icons.campaign;
+    return Icons.analytics;
   }
 
   @override
   Widget build(BuildContext context) {
-    bool hasConflict = _evidenceItems.take(_visibleCount).any((e) => e['verdict'] == 'CONTRADICTS');
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Evidence Verification')),
+      appBar: AppBar(title: const Text('Agent A2 — Evidence Verification')),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Agent A2 checking 5 data sources', style: TextStyle(color: Colors.grey[600], fontStyle: FontStyle.italic)),
+            Text(
+              'Checking ${_evidenceItems.length} data sources...',
+              style: TextStyle(color: AppTheme.textSecondary, fontStyle: FontStyle.italic),
+            ),
             const SizedBox(height: 16),
-            
-            ...List.generate(_evidenceItems.length, (index) {
-              if (index >= _visibleCount) return const SizedBox.shrink();
-              final item = _evidenceItems[index];
+
+            ...List.generate(_evidenceItems.length, (i) {
+              if (i >= _visibleCount) return const SizedBox.shrink();
+              final item = _evidenceItems[i];
+              final verdict = item['verdict'] as String? ?? 'NEUTRAL';
               return Card(
                 margin: const EdgeInsets.only(bottom: 12),
                 child: ExpansionTile(
-                  leading: Icon(item['icon'], color: AppTheme.primaryNavy),
-                  title: Text(item['source'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                  subtitle: Text(item['value']),
-                  trailing: _buildVerdictBadge(item['verdict']),
+                  leading: Icon(_sourceIcon(item['source'] ?? ''), color: AppTheme.accentCyan),
+                  title: Text(item['source'] ?? '', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  subtitle: Text(item['value'] ?? ''),
+                  trailing: _buildVerdictBadge(verdict),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Text(item['justification'], style: TextStyle(color: Colors.grey[700])),
+                      padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+                      child: Text(
+                        item['justification'] ?? '',
+                        style: TextStyle(color: AppTheme.textSecondary, height: 1.4),
+                      ),
                     ),
                   ],
                 ),
-              ).animate().fadeIn().slideX();
+              ).animate().fadeIn().slideX(begin: 0.05);
             }),
 
-            if (_showConfidence) ...[
-              const SizedBox(height: 16),
+            if (_hasConflict) ...[
+              const SizedBox(height: 12),
               Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(14),
                 decoration: BoxDecoration(
-                  color: AppTheme.primaryNavy,
-                  borderRadius: BorderRadius.circular(8),
+                  color: AppTheme.warningAmber.withValues(alpha: 0.12),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: AppTheme.warningAmber),
                 ),
-                child: const Column(
-                  children: [
-                    Text('Confidence Level', style: TextStyle(color: Colors.white70)),
-                    SizedBox(height: 4),
-                    Text('MEDIUM', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ).animate().fadeIn().scale(),
-            ],
-
-            if (hasConflict) ...[
-              const SizedBox(height: 16),
-              Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(color: Colors.orange.shade100, borderRadius: BorderRadius.circular(8), border: Border.all(color: Colors.orange)),
                 child: Row(
                   children: [
-                    const Icon(Icons.warning_amber_rounded, color: Colors.deepOrange),
-                    const SizedBox(width: 16),
-                    Expanded(
+                    const Icon(Icons.warning_amber_rounded, color: AppTheme.warningAmber),
+                    const SizedBox(width: 12),
+                    const Expanded(
                       child: Text(
                         'Conflict detected — Coordinator Agent X reviewing',
-                        style: TextStyle(color: Colors.orange.shade900, fontWeight: FontWeight.bold),
+                        style: TextStyle(color: AppTheme.warningAmber, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ],
@@ -155,17 +125,52 @@ class _Screen3EvidencePanelState extends State<Screen3EvidencePanel> {
               ).animate().fadeIn(),
             ],
 
-            const SizedBox(height: 32),
-            if (_showConfidence)
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
+            if (_showConfidence) ...[
+              const SizedBox(height: 16),
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: _confidence == 'HIGH'
+                        ? [AppTheme.successEmerald, const Color(0xFF059669)]
+                        : _confidence == 'MEDIUM'
+                            ? [AppTheme.warningAmber, const Color(0xFFD97706)]
+                            : [AppTheme.alertCrimson, const Color(0xFFDC2626)],
+                  ),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Column(
+                  children: [
+                    const Text('Evidence Confidence', style: TextStyle(color: Colors.white70, fontSize: 13)),
+                    const SizedBox(height: 4),
+                    Text(_confidence, style: const TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ).animate().fadeIn().scale(),
+              const SizedBox(height: 16),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(colors: [AppTheme.accentBlue, AppTheme.accentCyan]),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: ElevatedButton(
+                  onPressed: () => Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const Screen4SeverityDashboard()),
-                  );
-                },
-                child: const Text('Continue to Severity Dashboard'),
-              ).animate().fadeIn(),
+                    MaterialPageRoute(
+                      builder: (_) => Screen4SeverityDashboard(analysisResult: widget.analysisResult),
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
+                    shadowColor: Colors.transparent,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  ),
+                  child: const Text('Continue to Severity Dashboard',
+                      style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600)),
+                ),
+              ).animate().fadeIn(delay: 300.ms),
+            ],
           ],
         ),
       ),

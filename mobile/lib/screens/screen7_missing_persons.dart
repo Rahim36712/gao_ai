@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:http/http.dart' as http;
 import '../theme.dart';
 
 class Screen7MissingPersons extends StatefulWidget {
@@ -161,7 +159,7 @@ class _OpenCasesTabState extends State<_OpenCasesTab> {
         children: [
           Icon(matched ? Icons.check_circle : Icons.radio_button_unchecked, size: 14, color: matched ? AppTheme.successEmerald : Colors.grey),
           const SizedBox(width: 4),
-          Expanded(child: Text('$label: $value', style: TextStyle(fontSize: 12, color: matched ? Colors.black87 : Colors.grey))),
+          Expanded(child: Text('$label: $value', style: TextStyle(fontSize: 12, color: matched ? AppTheme.textPrimary : Colors.grey))),
         ],
       ),
     );

@@ -55,22 +55,7 @@ def load_config(filename):
         return json.load(f)
 
 
-def call_gemini(client, system_prompt, user_prompt, config):
-    response = client.models.generate_content(
-        model=config["model"]["model_name"],
-        contents=user_prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=system_prompt,
-            temperature=config["model"]["temperature"],
-            max_output_tokens=config["model"]["max_output_tokens"],
-            response_mime_type=config["model"]["response_mime_type"],
-        ),
-    )
-    text = response.text.strip()
-    if text.startswith("`json"): text = text[7:]
-    if text.startswith("`"): text = text[3:]
-    if text.endswith("`"): text = text[:-3]
-    return json.loads(text.strip())
+from gemini_utils import call_gemini
 
 
 def api_get(path):

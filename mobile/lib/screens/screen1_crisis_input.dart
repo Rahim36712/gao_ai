@@ -29,7 +29,7 @@ class _Screen1CrisisInputState extends State<Screen1CrisisInput> {
 
   Future<void> _fetchVillages() async {
     try {
-      final response = await http.get(Uri.parse('http://10.0.2.2:8000/api/villages'));
+      final response = await http.get(Uri.parse('http://localhost:8000/api/villages'));
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         setState(() {
@@ -82,101 +82,112 @@ class _Screen1CrisisInputState extends State<Screen1CrisisInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Crisis Report'),
-        actions: [
-          TextButton.icon(
-            icon: const Icon(Icons.science, color: Colors.white),
-            label: const Text('Demo Mode', style: TextStyle(color: Colors.white)),
-            onPressed: _showDemoMode,
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Demo mode button
+          Align(
+            alignment: Alignment.centerRight,
+            child: TextButton.icon(
+              icon: const Icon(Icons.science, color: AppTheme.accentCyan, size: 18),
+              label: const Text('Demo Mode', style: TextStyle(color: AppTheme.accentCyan)),
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(color: AppTheme.accentCyan.withOpacity(0.3)),
+                ),
+              ),
+              onPressed: _showDemoMode,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Text('Source', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            children: _sources.map((source) {
+              final isSelected = _selectedSource == source;
+              return ChoiceChip(
+                label: Text(source),
+                selected: isSelected,
+                onSelected: (selected) {
+                  if (selected) setState(() => _selectedSource = source);
+                },
+              );
+            }).toList(),
+          ),
+          const SizedBox(height: 20),
+          Text('Village', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          DropdownButtonFormField<String>(
+            value: _selectedVillage,
+            dropdownColor: AppTheme.cardDark,
+            items: _villages.map((v) {
+              return DropdownMenuItem<String>(
+                value: v['id'],
+                child: Text("${v['name']} (${v['district']})"),
+              );
+            }).toList(),
+            onChanged: (val) => setState(() => _selectedVillage = val),
+          ),
+          const SizedBox(height: 20),
+          Text('Complaint Details', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          SizedBox(
+            height: 180,
+            child: Stack(
+              children: [
+                TextField(
+                  controller: _complaintController,
+                  maxLines: null,
+                  expands: true,
+                  textAlignVertical: TextAlignVertical.top,
+                  decoration: const InputDecoration(
+                    hintText: 'Describe the crisis in Urdu, Roman Urdu, or English...',
+                  ),
+                ),
+                Positioned(
+                  bottom: 12,
+                  right: 12,
+                  child: FloatingActionButton(
+                    mini: true,
+                    backgroundColor: AppTheme.accentCyan,
+                    onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Voice input coming soon')),
+                      );
+                    },
+                    child: const Icon(Icons.mic, color: Colors.white, size: 20),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 24),
+          Container(
+            decoration: BoxDecoration(
+              gradient: const LinearGradient(
+                colors: [AppTheme.accentBlue, AppTheme.accentCyan],
+              ),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: ElevatedButton(
+              onPressed: _isLoading ? null : _submitReport,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+                shadowColor: Colors.transparent,
+                padding: const EdgeInsets.symmetric(vertical: 18),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+              ),
+              child: _isLoading 
+                  ? const SizedBox(height: 22, width: 22, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+                  : const Text('Analyze & Report', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white)),
+            ),
           ),
         ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text('Source', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            Wrap(
-              spacing: 8,
-              children: _sources.map((source) {
-                final isSelected = _selectedSource == source;
-                return ChoiceChip(
-                  label: Text(source),
-                  selected: isSelected,
-                  onSelected: (selected) {
-                    if (selected) setState(() => _selectedSource = source);
-                  },
-                  selectedColor: AppTheme.accentBlue.withOpacity(0.2),
-                  labelStyle: TextStyle(
-                    color: isSelected ? AppTheme.accentBlue : Colors.black87,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  ),
-                );
-              }).toList(),
-            ),
-            const SizedBox(height: 16),
-            Text('Village', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            DropdownButtonFormField<String>(
-              value: _selectedVillage,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-              ),
-              items: _villages.map((v) {
-                return DropdownMenuItem<String>(
-                  value: v['id'],
-                  child: Text("${v['name']} (${v['district']})"),
-                );
-              }).toList(),
-              onChanged: (val) => setState(() => _selectedVillage = val),
-            ),
-            const SizedBox(height: 16),
-            Text('Complaint Details', style: Theme.of(context).textTheme.titleMedium),
-            const SizedBox(height: 8),
-            Expanded(
-              child: Stack(
-                children: [
-                  TextField(
-                    controller: _complaintController,
-                    maxLines: null,
-                    expands: true,
-                    textAlignVertical: TextAlignVertical.top,
-                    decoration: const InputDecoration(
-                      hintText: 'Describe the crisis in Urdu, Roman Urdu, or English...',
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 16,
-                    right: 16,
-                    child: FloatingActionButton(
-                      mini: true,
-                      backgroundColor: AppTheme.accentBlue,
-                      onPressed: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Voice input coming soon')),
-                        );
-                      },
-                      child: const Icon(Icons.mic, color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _isLoading ? null : _submitReport,
-              child: _isLoading 
-                  ? const CircularProgressIndicator(color: Colors.white) 
-                  : const Text('Analyze & Report', style: TextStyle(fontSize: 18)),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -203,11 +214,15 @@ class _DemoModeSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
+      decoration: const BoxDecoration(
+        color: AppTheme.surfaceDark,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+      ),
       constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.7),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey[300], borderRadius: BorderRadius.circular(2))),
+          Container(width: 40, height: 4, decoration: BoxDecoration(color: AppTheme.textSecondary.withOpacity(0.3), borderRadius: BorderRadius.circular(2))),
           const SizedBox(height: 16),
           Row(
             children: [
@@ -217,7 +232,7 @@ class _DemoModeSheet extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 4),
-          Text('Tap any scenario to trigger it and see the result', style: TextStyle(color: Colors.grey[600])),
+          Text('Tap any scenario to trigger it and see the result', style: TextStyle(color: AppTheme.textSecondary)),
           const SizedBox(height: 16),
           Expanded(
             child: ListView.builder(
@@ -255,9 +270,10 @@ class _DemoModeSheet extends StatelessWidget {
       context: context,
       barrierDismissible: false,
       builder: (_) => AlertDialog(
+        backgroundColor: AppTheme.surfaceDark,
         content: Row(
           children: [
-            const CircularProgressIndicator(),
+            const CircularProgressIndicator(color: AppTheme.accentCyan),
             const SizedBox(width: 16),
             Text('Triggering Edge Case $caseNum...'),
           ],
@@ -265,18 +281,25 @@ class _DemoModeSheet extends StatelessWidget {
       ),
     );
 
+    bool success = false;
     try {
-      await http.post(Uri.parse('http://10.0.2.2:8000/api/demo/edge_case/$caseNum'));
-    } catch (_) {}
+      final response = await http.post(
+        Uri.parse('http://localhost:8000/api/demo/edge_case/$caseNum'),
+      ).timeout(const Duration(seconds: 5));
+      success = (response.statusCode == 200);
+    } catch (_) {
+      success = false;
+    }
 
     if (!context.mounted) return;
-    Navigator.pop(context); // dismiss loading
+    Navigator.of(context, rootNavigator: true).pop(); // dismiss loading
 
-    // Show success and navigate to trace viewer
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Edge Case $caseNum triggered: $title — Check Trace tab'),
-        backgroundColor: AppTheme.successEmerald,
+        content: Text(success
+            ? 'Edge Case $caseNum triggered: $title — Check Trace tab'
+            : 'Edge Case $caseNum failed — is the backend running?'),
+        backgroundColor: success ? AppTheme.successEmerald : AppTheme.alertCrimson,
       ),
     );
   }

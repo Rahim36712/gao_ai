@@ -28,7 +28,7 @@ from google.genai import types
 
 API_BASE = os.environ.get("API_BASE", "http://localhost:8000")
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "gemini-2.0-flash"
 
 CONFIGS_DIR = Path(__file__).resolve().parent / "agent_configs"
 OUTPUT_DIR = Path(__file__).resolve().parent / "test_outputs"
@@ -40,22 +40,7 @@ def load_config(filename):
         return json.load(f)
 
 
-def call_gemini(client, system_prompt, user_prompt, config):
-    response = client.models.generate_content(
-        model=config["model"]["model_name"],
-        contents=user_prompt,
-        config=types.GenerateContentConfig(
-            system_instruction=system_prompt,
-            temperature=config["model"]["temperature"],
-            max_output_tokens=config["model"]["max_output_tokens"],
-            response_mime_type=config["model"]["response_mime_type"],
-        ),
-    )
-    text = response.text.strip()
-    if text.startswith("`json"): text = text[7:]
-    if text.startswith("`"): text = text[3:]
-    if text.endswith("`"): text = text[:-3]
-    return json.loads(text.strip())
+from gemini_utils import call_gemini
 
 
 def api_get(path):

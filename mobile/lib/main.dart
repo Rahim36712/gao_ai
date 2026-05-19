@@ -17,7 +17,7 @@ class GaonGuardApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Gaon Guard AI',
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       home: const MainNavigator(),
       debugShowCheckedModeBanner: false,
     );
@@ -35,27 +35,53 @@ class _MainNavigatorState extends State<MainNavigator> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    const Screen1CrisisInput(), // Crisis Tab
-    const Screen7MissingPersons(), // Missing Tab
-    const Screen8AidDistribution(), // Aid Tab
-    const Screen9AgentTraceViewer(), // Trace Tab
+    const Screen1CrisisInput(),
+    const Screen7MissingPersons(),
+    const Screen8AidDistribution(),
+    const Screen9AgentTraceViewer(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gaon Guard AI'),
+        title: Row(
+          children: [
+            Container(
+              padding: const EdgeInsets.all(6),
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
+                  colors: [AppTheme.accentBlue, AppTheme.accentCyan],
+                ),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: const Icon(Icons.shield, color: Colors.white, size: 18),
+            ),
+            const SizedBox(width: 10),
+            const Text('Gaon Guard AI'),
+          ],
+        ),
         actions: [
-          TextButton.icon(
-            icon: const Icon(Icons.compare_arrows, color: Colors.white),
-            label: const Text('Before vs After', style: TextStyle(color: Colors.white)),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Screen10BeforeAfter()),
-              );
-            },
+          Container(
+            margin: const EdgeInsets.only(right: 8),
+            child: TextButton.icon(
+              icon: const Icon(Icons.compare_arrows, color: AppTheme.accentCyan, size: 18),
+              label: Text('Before vs After',
+                  style: TextStyle(color: AppTheme.accentCyan, fontSize: 13)),
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(horizontal: 12),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  side: BorderSide(color: AppTheme.accentCyan.withOpacity(0.3)),
+                ),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Screen10BeforeAfter()),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -65,18 +91,22 @@ class _MainNavigatorState extends State<MainNavigator> {
           children: _pages,
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppTheme.accentBlue,
-        unselectedItemColor: Colors.grey,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.warning_amber_rounded), label: 'Crisis'),
-          BottomNavigationBarItem(icon: Icon(Icons.person_search), label: 'Missing'),
-          BottomNavigationBarItem(icon: Icon(Icons.inventory_2), label: 'Aid'),
-          BottomNavigationBarItem(icon: Icon(Icons.analytics), label: 'Trace'),
-        ],
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: AppTheme.textSecondary.withOpacity(0.1)),
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) => setState(() => _currentIndex = index),
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.warning_amber_rounded), label: 'Crisis'),
+            BottomNavigationBarItem(icon: Icon(Icons.person_search), label: 'Missing'),
+            BottomNavigationBarItem(icon: Icon(Icons.inventory_2), label: 'Aid'),
+            BottomNavigationBarItem(icon: Icon(Icons.analytics), label: 'Traces'),
+          ],
+        ),
       ),
     );
   }

@@ -57,7 +57,7 @@ class Screen10BeforeAfter extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Expanded(child: Text('Before Gaon Guard AI', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey[600]))),
+                      Expanded(child: Text('Before Gaon Guard AI', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.textSecondary))),
                       const SizedBox(width: 16),
                       const Expanded(child: Text('After Gaon Guard AI', textAlign: TextAlign.center, style: TextStyle(fontWeight: FontWeight.bold, color: AppTheme.primaryNavy))),
                     ],
@@ -106,7 +106,7 @@ class Screen10BeforeAfter extends StatelessWidget {
                     children: [
                       const Icon(Icons.close, color: AppTheme.alertCrimson, size: 20),
                       const SizedBox(height: 4),
-                      Text(data['before']!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: Colors.black87)),
+                      Text(data['before']!, textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: AppTheme.textPrimary)),
                     ],
                   ),
                 ),

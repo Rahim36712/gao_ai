@@ -58,7 +58,7 @@ class _Screen9AgentTraceViewerState extends State<Screen9AgentTraceViewer> {
 
   Future<void> _fetchTraces() async {
     try {
-      final resp = await http.get(Uri.parse('http://10.0.2.2:8000/api/demo/traces'));
+      final resp = await http.get(Uri.parse('http://localhost:8000/api/demo/traces'));
       if (resp.statusCode == 200) {
         final data = jsonDecode(resp.body);
         final apiTraces = List<Map<String, dynamic>>.from(data['data']);
@@ -189,7 +189,7 @@ class _Screen9AgentTraceViewerState extends State<Screen9AgentTraceViewer> {
                 const Divider(),
                 Row(
                   children: [
-                    Icon(Icons.gavel, size: 14, color: Colors.grey[600]),
+                    Icon(Icons.gavel, size: 14, color: AppTheme.textSecondary),
                     const SizedBox(width: 4),
                     Text(trace['decision'] ?? '', style: TextStyle(color: Colors.grey[800], fontSize: 12, fontWeight: FontWeight.bold)),
                     const Spacer(),

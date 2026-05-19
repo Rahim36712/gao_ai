@@ -6,13 +6,16 @@ Google Antigravity Hackathon (Challenge 3)
 All data served by this API is SYNTHETIC DEMO DATA.
 """
 
+import sys
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 import uuid
 from datetime import datetime, timezone
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
-from pathlib import Path
 from pydantic import BaseModel, Field
 import json
 
@@ -596,3 +599,218 @@ def export_traces_api():
         "note": "ALL DATA IS SYNTHETIC DEMO DATA",
     }
 
+
+# ──────────────────────────────────────────────
+# Smart Complaint Analyzer (keyword NLP, no Gemini)
+# ──────────────────────────────────────────────
+
+class ComplaintRequest(BaseModel):
+    complaint_text: str
+    village_id: str = "VIL_001"
+
+
+@app.post("/api/analyze-complaint")
+def analyze_complaint(req: ComplaintRequest):
+    """Analyze any complaint text dynamically via keyword NLP. No Gemini quota used."""
+    text = req.complaint_text.lower()
+    village_id = req.village_id
+
+    # ── A1: Signal Extraction ──────────────────
+    signals = []
+    flood_kw = ["pani", "flood", "water", "seel", "baarish", "khara", "baarh", "sailaab", "barsat", "inundation", "darya", "nehri"]
+    if any(k in text for k in flood_kw):
+        signals.append("FLOOD")
+
+    health_kw = ["diarrhea", "beemar", "hospital", "disease", "bukhar", "fever", "sick", "cholera", "malaria", "vomit", "ulti", "dast", "health", "sehat", "doctor", "dawa"]
+    if any(k in text for k in health_kw):
+        signals.append("HEALTH")
+
+    fire_kw = ["aag", "fire", "jalraha", "jal raha", "burn", "blaze", "surkh"]
+    if any(k in text for k in fire_kw):
+        signals.append("FIRE")
+
+    food_kw = ["khaana", "food", "qahat", "hunger", "bhook", "faqa", "ration", "khana nahi", "khana", "grain"]
+    if any(k in text for k in food_kw):
+        signals.append("FOOD_SHORTAGE")
+
+    infra_kw = ["road", "bridge", "sarak", "pul", "bijli", "electricity", "current nahi", "makaan", "ghar gir"]
+    if any(k in text for k in infra_kw):
+        signals.append("INFRASTRUCTURE")
+
+    missing_person = False
+    missing_kw = ["missing", "nazar nahi", "gum", "lost", "laapta", "nahi mila", "bucha", "bachay gum", "child missing"]
+    if any(k in text for k in missing_kw):
+        missing_person = True
+        signals.append("MISSING_PERSON")
+
+    if not signals:
+        signals.append("GENERAL_EMERGENCY")
+
+    # Duration hints
+    duration_hours = 24
+    dur_map = {"2 din": 48, "do din": 48, "3 din": 72, "teen din": 72, "ek din": 24, "1 din": 24,
+               "week": 168, "hafte": 168, "months": 720, "mahine": 720, "ghante": 2}
+    for hint, h in dur_map.items():
+        if hint in text:
+            duration_hours = h
+            break
+
+    # Location detection
+    loc_map = {"ali pur": "Ali Pur", "alipur": "Ali Pur", "larkana": "Larkana", "dadu": "Dadu",
+               "sukkur": "Sukkur", "jacobabad": "Jacobabad", "dera ghazi": "Dera Ghazi Khan",
+               "multan": "Multan", "lahore": "Lahore", "karachi": "Karachi",
+               "peshawar": "Peshawar", "quetta": "Quetta", "nawabshah": "Nawabshah",
+               "hyderabad": "Hyderabad", "kashmore": "Kashmore", "basti": "Basti Malook"}
+    detected_location = "Unknown Village"
+    for hint, name in loc_map.items():
+        if hint in text:
+            detected_location = name
+            break
+    if detected_location == "Unknown Village":
+        vil = next((v for v in villages if v.get("village_id") == village_id), None)
+        if vil:
+            detected_location = vil.get("name", "Unknown Village")
+
+    # Affected group
+    affected_group = "GENERAL"
+    if any(k in text for k in ["bacha", "bachay", "children", "child", "kids", "baby", "bachi"]):
+        affected_group = "CHILDREN"
+    elif any(k in text for k in ["aurat", "women", "female", "khawateen", "maa", "mother"]):
+        affected_group = "WOMEN"
+    elif any(k in text for k in ["buzurg", "old", "elderly", "baba", "dada", "dadi"]):
+        affected_group = "ELDERLY"
+
+    # ── A2: Evidence (from mock data) ──────────
+    vil = next((v for v in villages if v.get("village_id") == village_id), None)
+    district = vil["district"] if vil else "Larkana"
+    weather_rec = next((w for w in weather if w.get("district") == district), None)
+    rainfall = weather_rec.get("rainfall_mm_24h", 0) if weather_rec else 0
+    road_rec = next((r for r in road_status if r.get("village_id") == village_id), None)
+    road_blocked = road_rec.get("main_road_blocked", False) if road_rec else False
+    health_rec = next((h for h in health_reports if h.get("village_id") == village_id), None)
+    diarrhea = health_rec.get("diarrhea_cases_7d", 0) if health_rec else 0
+    open_missing_count = len([m for m in missing_persons if m.get("status") == "OPEN"])
+
+    evidence_checks = []
+    if "FLOOD" in signals or "GENERAL_EMERGENCY" in signals:
+        if rainfall > 5:
+            ev = {"source": "Rainfall Data", "value": f"{rainfall}mm in 24h", "verdict": "SUPPORTS",
+                  "justification": f"Heavy rainfall of {rainfall}mm confirms flooding potential."}
+        elif rainfall == 0:
+            ev = {"source": "Rainfall Data", "value": "0mm in 24h", "verdict": "CONTRADICTS",
+                  "justification": "No rainfall recorded — may indicate irrigation canal breach or data lag."}
+        else:
+            ev = {"source": "Rainfall Data", "value": f"{rainfall}mm in 24h", "verdict": "NEUTRAL",
+                  "justification": "Moderate rainfall — inconclusive for flood claim."}
+        evidence_checks.append(ev)
+
+    evidence_checks.append({
+        "source": "Road Status", "value": "Blocked" if road_blocked else "Clear",
+        "verdict": "SUPPORTS" if road_blocked else "NEUTRAL",
+        "justification": "Main road blocked — confirms access difficulty." if road_blocked else "Roads clear — no access restrictions.",
+    })
+
+    if "HEALTH" in signals or diarrhea > 0:
+        evidence_checks.append({
+            "source": "Health Reports", "value": f"Diarrhea Cases: {diarrhea}",
+            "verdict": "SUPPORTS" if diarrhea > 5 else "NEUTRAL",
+            "justification": f"Health facility reported {diarrhea} diarrhea cases this week." + (" Strongly supports contaminated water." if diarrhea > 10 else ""),
+        })
+
+    evidence_checks.append({
+        "source": "Crop Calendar", "value": "Active Season",
+        "verdict": "NEUTRAL", "justification": "Seasonal status does not confirm or deny the crisis.",
+    })
+
+    if "MISSING_PERSON" in signals:
+        evidence_checks.append({
+            "source": "Missing Persons DB", "value": f"{open_missing_count} open case(s)",
+            "verdict": "SUPPORTS",
+            "justification": f"{open_missing_count} open missing person cases in system. Engine 2 activated for cross-matching.",
+        })
+    elif "FLOOD" in signals or "HEALTH" in signals:
+        evidence_checks.append({
+            "source": "Nearby Reports", "value": f"{open_missing_count} similar report(s)",
+            "verdict": "SUPPORTS" if open_missing_count > 0 else "NEUTRAL",
+            "justification": f"{open_missing_count} corroborating reports from nearby areas.",
+        })
+
+    # ── A3: Severity ───────────────────────────
+    score = 1.0
+    if "FLOOD" in signals:          score += 1.5
+    if "HEALTH" in signals:         score += 1.0
+    if "MISSING_PERSON" in signals: score += 1.5
+    if "FIRE" in signals:           score += 2.0
+    if "FOOD_SHORTAGE" in signals:  score += 1.0
+    if "INFRASTRUCTURE" in signals: score += 0.5
+    if road_blocked:                score += 0.5
+    if diarrhea > 10:               score += 0.5
+    has_conflict = any(e["verdict"] == "CONTRADICTS" for e in evidence_checks)
+    if has_conflict:                score -= 0.5
+    score = min(5.0, round(score, 1))
+
+    confidence = "HIGH" if score >= 4 and not has_conflict else ("MEDIUM" if score >= 2.5 else "LOW")
+    authorization = "DISPATCH_AUTHORIZED" if score >= 3.5 and not has_conflict else ("REQUEST_VERIFICATION" if has_conflict or score >= 2.5 else "MONITOR")
+
+    weight_breakdown = {}
+    if "FLOOD" in signals:          weight_breakdown["FLOOD signal"] = "+1.5"
+    if "HEALTH" in signals:         weight_breakdown["HEALTH signal"] = "+1.0"
+    if "MISSING_PERSON" in signals: weight_breakdown["Missing Person"] = "+1.5"
+    if "FIRE" in signals:           weight_breakdown["FIRE signal"] = "+2.0"
+    if road_blocked:                weight_breakdown["Road blocked"] = "+0.5"
+    if diarrhea > 10:               weight_breakdown["High health cases"] = "+0.5"
+    if has_conflict:                weight_breakdown["Evidence conflict"] = "-0.5"
+
+    coordinator_reasoning = None
+    if has_conflict:
+        coordinator_reasoning = (
+            f"Conflict: {detected_location} complaint mentions {'flood/water' if 'FLOOD' in signals else signals[0].lower()} "
+            f"but weather shows {rainfall}mm rainfall. Possible causes: "
+            "(1) Irrigation canal breach, (2) Weather station data lag, (3) Underground water seepage. "
+            "Action: REQUEST_VERIFICATION via SMS to focal person. Timeout: 20 min."
+        )
+
+    # ── Response Teams ─────────────────────────
+    team_map = {
+        "FLOOD":             {"dept": "DISASTER",  "team": "Rescue 1122",          "icon": "flood",                  "dist": "12.4", "eta": "25"},
+        "HEALTH":            {"dept": "HEALTH",    "team": "Mobile Med Unit",       "icon": "local_hospital",         "dist": "8.1",  "eta": "15"},
+        "MISSING_PERSON":    {"dept": "POLICE",    "team": "Child Recovery Unit",   "icon": "person_search",          "dist": "5.2",  "eta": "10"},
+        "FIRE":              {"dept": "FIRE",      "team": "Fire Brigade Alpha",    "icon": "local_fire_department",  "dist": "15.0", "eta": "30"},
+        "FOOD_SHORTAGE":     {"dept": "WELFARE",   "team": "Ration Distribution",   "icon": "volunteer_activism",     "dist": "20.0", "eta": "45"},
+        "INFRASTRUCTURE":    {"dept": "PDMA",      "team": "Infrastructure Team",   "icon": "construction",           "dist": "18.0", "eta": "40"},
+        "GENERAL_EMERGENCY": {"dept": "DISASTER",  "team": "General Response Team", "icon": "emergency",              "dist": "10.0", "eta": "20"},
+    }
+    response_teams = []
+    seen = set()
+    for sig in signals:
+        if sig in team_map and team_map[sig]["dept"] not in seen:
+            t = dict(team_map[sig])
+            t["id"] = f"TKT-{900 + len(response_teams)}"
+            t["signal"] = sig
+            response_teams.append(t)
+            seen.add(t["dept"])
+
+    return {
+        "status": "ok",
+        "a1_signals": {
+            "location_name": detected_location,
+            "village_id": village_id,
+            "crisis_type": signals,
+            "missing_person_signal": missing_person,
+            "affected_group": affected_group,
+            "duration_hours": duration_hours,
+            "raw_complaint": req.complaint_text,
+        },
+        "a2_evidence": {
+            "confidence": confidence,
+            "has_conflict": has_conflict,
+            "evidence_checks": evidence_checks,
+        },
+        "a3_severity": {
+            "severity_score": score,
+            "authorization": authorization,
+            "weight_breakdown": weight_breakdown,
+            "coordinator_reasoning": coordinator_reasoning,
+        },
+        "response_teams": response_teams,
+    }
