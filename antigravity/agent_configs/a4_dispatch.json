@@ -1,0 +1,105 @@
+{
+  "_doc": "AGENT A4 - DISPATCH & TRACKING AGENT - Gaon Guard AI",
+  "agent_id": "A4_DISPATCH",
+  "version": "0.2.0",
+  "engine": "CRISIS_INTELLIGENCE",
+  "group": "A",
+  "sequence": 4,
+  "purpose": "Assign nearest available teams, create dispatch tickets, monitor lifecycle, escalate on non-movement.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.0-flash",
+    "temperature": 0.1,
+    "max_output_tokens": 1024,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "Return ONLY short valid JSON. No markdown, no comments, no trailing commas, double quotes only. Create 1 ticket for each present signal: FLOOD -> DISASTER, HEALTH -> HEALTH, MISSING_PERSON -> RESCUE. If none of those signals exist, create 1 DISASTER ticket. Use only available teams. Pick nearest team by distance. Return 1 to 3 tickets maximum. Keep all strings under 80 characters. ETA assumes 40 km/h. Schema exactly: {\"tickets\":[{\"ticket_id\":\"string\",\"department\":\"string\",\"team_id\":\"string\",\"team_name\":\"string\",\"distance_km\":0,\"eta_minutes\":0,\"status\":\"ASSIGNED\",\"reason\":\"string\"}],\"dispatch_time\":\"string\",\"escalation_schedule\":{\"t_plus_30\":\"string\",\"t_plus_60\":\"string\"},\"dispatch_summary\":\"string\"}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "tickets": {
+        "type": "array",
+        "maxItems": 3,
+        "items": {
+          "type": "object",
+          "properties": {
+            "ticket_id": {"type": "string"},
+            "department": {"type": "string"},
+            "team_id": {"type": "string"},
+            "team_name": {"type": "string"},
+            "distance_km": {"type": "number"},
+            "eta_minutes": {"type": "number"},
+            "status": {"type": "string", "enum": ["ASSIGNED"]},
+            "reason": {"type": "string"}
+          },
+          "required": [
+            "ticket_id",
+            "department",
+            "team_id",
+            "team_name",
+            "distance_km",
+            "eta_minutes",
+            "status",
+            "reason"
+          ]
+        }
+      },
+      "dispatch_time": {"type": "string"},
+      "escalation_schedule": {
+        "type": "object",
+        "properties": {
+          "t_plus_30": {"type": "string"},
+          "t_plus_60": {"type": "string"}
+        },
+        "required": ["t_plus_30", "t_plus_60"]
+      },
+      "dispatch_summary": {"type": "string"}
+    },
+    "required": ["tickets", "dispatch_time", "escalation_schedule", "dispatch_summary"]
+  },
+
+  "lifecycle_state_machine": {
+    "ASSIGNED": {"next": ["ACCEPTED", "ESCALATED"]},
+    "ACCEPTED": {"next": ["EN_ROUTE", "ESCALATED"]},
+    "EN_ROUTE": {"next": ["ARRIVED", "ESCALATED"]},
+    "ARRIVED": {"next": ["EVIDENCE_UPLOADED", "ESCALATED"]},
+    "EVIDENCE_UPLOADED": {"next": ["CONFIRMED", "DISPUTED", "ESCALATED"]},
+    "CONFIRMED": {"next": []},
+    "DISPUTED": {"next": ["ESCALATED"]},
+    "ESCALATED": {"next": []}
+  },
+
+  "escalation_rules": [
+    {
+      "trigger": "T+30min still ASSIGNED",
+      "action": "TEAM_REMINDER via POST /api/notify"
+    },
+    {
+      "trigger": "T+60min still ASSIGNED or GPS unmoved",
+      "action": "ESCALATED + notify Coordinator X"
+    }
+  ],
+
+  "tools_used": [
+    {
+      "name": "get_available_teams",
+      "endpoint": "GET /api/teams/available"
+    },
+    {
+      "name": "update_dispatch_status",
+      "endpoint": "PATCH /api/dispatch/{ticket_id}/status"
+    },
+    {
+      "name": "send_notification",
+      "endpoint": "POST /api/notify"
+    }
+  ],
+
+  "handoff": {
+    "next_agent": null,
+    "monitors": "Continues monitoring until all tickets reach CONFIRMED or ESCALATED"
+  }
+}

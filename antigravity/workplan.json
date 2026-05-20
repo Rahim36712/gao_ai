@@ -1,0 +1,195 @@
+{
+  "_doc": "Gaon Guard AI - Antigravity Workplan - Google Antigravity Hackathon Challenge 3",
+  "version": "0.2.0",
+  "last_updated": "2026-05-17",
+
+  "objective": {
+    "title": "Gaon Guard AI: 3-Engine Agentic Crisis Intelligence for Rural Pakistan",
+    "summary": "Build an AI-native crisis response system that fuses real-time signals (weather, health, road, missing persons) into actionable dispatch decisions for flood-affected rural communities in Sindh and Punjab. The system uses 3 cooperating agent engines to triage crises, coordinate field response, and audit aid distribution -- all with full explainability traces.",
+    "challenge": "Google Antigravity Hackathon - Challenge 3",
+    "target_region": "Rural Sindh and Punjab, Pakistan",
+    "primary_demo_scenario": "Ali Pur (Larkana, Sindh) flood crisis with missing child and health outbreak"
+  },
+
+  "architecture": {
+    "engines": [
+      {
+        "id": "ENGINE_1",
+        "name": "Crisis Intelligence Engine",
+        "description": "Detects, verifies, and scores crisis events from multi-source signals",
+        "agent_group": "A",
+        "agents": ["A1_INTAKE", "A2_EVIDENCE", "A3_SEVERITY"]
+      },
+      {
+        "id": "ENGINE_2",
+        "name": "Response Coordination Engine",
+        "description": "Dispatches field teams, tracks missing persons, manages real-time field operations",
+        "agent_group": "B",
+        "agents": ["B1_DISPATCH", "B2_MISSING_MATCH", "B3_FIELD_MONITOR"]
+      },
+      {
+        "id": "ENGINE_3",
+        "name": "Aid Audit Engine",
+        "description": "Monitors aid distribution for anomalies, price gouging, and fraud patterns",
+        "agent_group": "C",
+        "agents": ["C1_DISTRIBUTION_AUDIT", "C2_PRICE_MONITOR", "C3_PATTERN_DETECTOR"]
+      }
+    ],
+    "execution_mode": "PARALLEL_GROUPS",
+    "execution_detail": "Engine 1 (Group A) runs first as the trigger. Once a crisis is created and scored, Engine 2 (Group B) and Engine 3 (Group C) can execute in parallel. Within each group, agents run sequentially: A1 -> A2 -> A3, B1 -> B2 -> B3, C1 -> C2 -> C3."
+  },
+
+  "agent_registry": {
+    "A1_INTAKE": {
+      "name": "Intake Agent",
+      "purpose": "Parse raw complaint in Urdu/Roman Urdu/English, extract structured crisis signals",
+      "input": "Raw complaint text",
+      "output": "Structured crisis signal JSON",
+      "model": "gemini-2.5-flash",
+      "status": "CONFIGURED"
+    },
+    "A2_EVIDENCE": {
+      "name": "Evidence Agent",
+      "purpose": "Cross-check signals against 5 data sources, produce confidence score",
+      "input": "A1 output + API data from weather, roads, health, villages, missing persons",
+      "output": "Evidence verification with HIGH/MEDIUM/LOW confidence",
+      "model": "gemini-2.5-flash",
+      "status": "CONFIGURED"
+    },
+    "A3_SEVERITY": {
+      "name": "Severity Agent",
+      "purpose": "Apply weighted scoring, authorize or hold dispatch",
+      "input": "A2 evidence summary",
+      "output": "Severity score 1-5, dispatch authorization decision",
+      "model": "gemini-2.5-flash",
+      "status": "CONFIGURED"
+    },
+    "B1_DISPATCH": {
+      "name": "Dispatch Agent",
+      "purpose": "Match available teams to crisis, create dispatch tickets",
+      "input": "Crisis event with severity score",
+      "output": "Dispatch tickets for field teams",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    },
+    "B2_MISSING_MATCH": {
+      "name": "Missing Persons Matching Agent",
+      "purpose": "Cross-reference missing person reports with camp registrations",
+      "input": "Missing persons list + unidentified camp registrations",
+      "output": "Match candidates with confidence scores",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    },
+    "B3_FIELD_MONITOR": {
+      "name": "Field Monitor Agent",
+      "purpose": "Track dispatch progress, send reminders, escalate stale tickets",
+      "input": "Active dispatch tickets",
+      "output": "Status updates, reminders, escalation events",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    },
+    "C1_DISTRIBUTION_AUDIT": {
+      "name": "Distribution Audit Agent",
+      "purpose": "Verify aid distribution records against entitlements and GPS",
+      "input": "Aid distribution log entries",
+      "output": "Audit verdicts: PASS/ANOMALY/FRAUD_RISK",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    },
+    "C2_PRICE_MONITOR": {
+      "name": "Price Monitor Agent",
+      "purpose": "Compare market prices against government guidelines, flag gouging",
+      "input": "Market prices + government guideline prices",
+      "output": "Price gouging alerts",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    },
+    "C3_PATTERN_DETECTOR": {
+      "name": "Pattern Detector Agent",
+      "purpose": "Detect systematic fraud patterns across distribution logs",
+      "input": "Aggregated distribution data",
+      "output": "Pattern analysis and fraud risk assessment",
+      "model": "gemini-2.5-flash",
+      "status": "PLANNED"
+    }
+  },
+
+  "data_sources": {
+    "mock_apis": [
+      "GET /api/villages",
+      "GET /api/weather/{district}",
+      "GET /api/roads/{village_id}",
+      "GET /api/health/{bhu_id}",
+      "GET /api/teams/available",
+      "GET /api/camps/unidentified",
+      "GET /api/prices",
+      "GET /api/missing/open",
+      "GET /api/beneficiaries/{village_id}"
+    ],
+    "firestore_collections": [
+      "crisis_events",
+      "dispatch_tickets",
+      "missing_persons_live",
+      "aid_distribution_log",
+      "agent_traces",
+      "notifications_log"
+    ]
+  },
+
+  "success_criteria": [
+    {
+      "id": "SC1",
+      "description": "Engine 1 (A1-A3) correctly triages the Ali Pur demo complaint from raw text to scored crisis event",
+      "metric": "severity_score >= 4, authorization == DISPATCH_AUTHORIZED, confidence == HIGH"
+    },
+    {
+      "id": "SC2",
+      "description": "Engine 2 (B1-B3) dispatches correct teams, matches Hassan Ali to CAMP_REG_019, sends family alert",
+      "metric": "match_score > 0.8, team dispatched within 30s of crisis activation"
+    },
+    {
+      "id": "SC3",
+      "description": "Engine 3 (C1-C3) detects at least one anomaly in aid distribution or price gouging scenario",
+      "metric": "audit_status != PASS for flagged test case"
+    },
+    {
+      "id": "SC4",
+      "description": "Full agent trace is recorded for every decision with explainable reasoning",
+      "metric": "agent_traces collection has entries for every agent step"
+    },
+    {
+      "id": "SC5",
+      "description": "End-to-end demo completes within 60 seconds from complaint to dispatch",
+      "metric": "total_latency < 60s"
+    },
+    {
+      "id": "SC6",
+      "description": "All data is clearly marked as SYNTHETIC throughout the system",
+      "metric": "X-Data-Type: SYNTHETIC header on all API responses"
+    }
+  ],
+
+  "demo_flow": {
+    "steps": [
+      "1. Raw complaint arrives (Roman Urdu): Ali Pur flooding + sick children + missing child",
+      "2. A1 parses complaint -> structured signals",
+      "3. A2 cross-checks 5 APIs -> HIGH confidence",
+      "4. A3 scores severity -> 5/5, DISPATCH_AUTHORIZED",
+      "5. B1 dispatches PDMA + Health teams -> dispatch tickets created",
+      "6. B2 matches Hassan Ali to CAMP_REG_019 -> PENDING_MATCH, family alerted",
+      "7. B3 monitors ticket progress -> sends reminders if stale",
+      "8. C1 audits incoming aid distribution -> flags anomalies",
+      "9. Full trace visible in Flutter app Screen 9"
+    ]
+  },
+
+  "tech_stack": {
+    "backend": "FastAPI (Python 3.14)",
+    "database": "Firebase Firestore",
+    "notifications": "FCM simulation (Firestore log)",
+    "ai_model": "Google Gemini 2.0 Flash",
+    "mobile": "Flutter (planned)",
+    "agent_framework": "Custom sequential/parallel agent chains",
+    "hosting": "Local development (hackathon demo)"
+  }
+}

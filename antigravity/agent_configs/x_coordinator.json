@@ -1,0 +1,62 @@
+{
+  "_doc": "AGENT X - COORDINATOR / CONFLICT ARBITRATION - Gaon Guard AI",
+  "agent_id": "X_COORDINATOR",
+  "version": "0.1.0",
+  "engine": "CRISIS_INTELLIGENCE",
+  "group": "X",
+  "sequence": 0,
+  "purpose": "Resolve contradictions between agents. The most scrutinized trace in the system.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.0-flash",
+    "temperature": 0.2,
+    "max_output_tokens": 2048,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are the conflict arbitration agent for Gaon Guard AI. When two agents produce contradictory outputs about the same event, you MUST: (1) State the contradiction clearly and precisely. (2) List ALL plausible explanations (minimum 3). (3) Make one of three decisions: PROCEED (dispatch anyway with monitoring), HOLD (wait for verification), REQUEST_VERIFICATION (send to human focal person with specific question). (4) Justify your decision with explicit reasoning. (5) Set a timeout: if REQUEST_VERIFICATION, specify how many minutes before automatic fallback. Your output is the most scrutinized trace in the system. Return ONLY valid JSON: {contradiction_summary, possible_explanations[], decision: PROCEED/HOLD/REQUEST_VERIFICATION, reasoning, timeout_minutes, fallback_action, verification_message}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "contradiction_summary": {"type": "string"},
+      "possible_explanations":  {"type": "array", "items": {"type": "string"}, "minItems": 3},
+      "decision":               {"type": "string", "enum": ["PROCEED", "HOLD", "REQUEST_VERIFICATION"]},
+      "reasoning":              {"type": "string"},
+      "timeout_minutes":        {"type": "number"},
+      "fallback_action":        {"type": "string"},
+      "verification_message":   {"type": "string"}
+    },
+    "required": ["contradiction_summary", "possible_explanations", "decision", "reasoning", "timeout_minutes", "fallback_action", "verification_message"]
+  },
+
+  "trigger_conditions": [
+    "Any evidence_check in A2 has verdict == CONTRADICTS",
+    "A2 confidence is LOW but A1 urgency_keywords are present",
+    "Multiple agents disagree on severity classification"
+  ],
+
+  "test_scenario": {
+    "label": "0mm rainfall vs flood claim",
+    "a1_output": {"location_name": "Ali Pur", "crisis_type": ["FLOOD", "HEALTH", "MISSING_PERSON"]},
+    "a2_contradiction": {
+      "source": "weather",
+      "value_retrieved": "rainfall_mm_24hr: 0",
+      "verdict": "CONTRADICTS",
+      "justification": "Weather data shows 0mm rainfall but complaint claims flooding"
+    },
+    "expected_decision": "REQUEST_VERIFICATION",
+    "expected_explanations_include": [
+      "Weather station data lag or malfunction",
+      "Irrigation canal breach or upstream dam release",
+      "Complainant exaggerating or misidentifying water source"
+    ]
+  },
+
+  "handoff": {
+    "on_PROCEED": "Continue to A3 with must_verify flag",
+    "on_HOLD": "Create WATCHLIST crisis event, notify DC",
+    "on_REQUEST_VERIFICATION": "Send SMS to focal person, wait for timeout, then fallback"
+  }
+}

@@ -1,0 +1,17 @@
+[
+  {"_comment": "SYNTHETIC DEMO DATA — Gaon Guard AI Hackathon"},
+  {"district": "Larkana", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 95.4, "rainfall_mm_6hr": 42.1, "flood_alert": "RED", "temperature_c": 38.2, "humidity_pct": 89},
+  {"district": "Dadu", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 72.8, "rainfall_mm_6hr": 31.5, "flood_alert": "ORANGE", "temperature_c": 37.5, "humidity_pct": 84},
+  {"district": "Jacobabad", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 88.2, "rainfall_mm_6hr": 38.9, "flood_alert": "RED", "temperature_c": 40.1, "humidity_pct": 82},
+  {"district": "Ghotki", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 78.5, "rainfall_mm_6hr": 35.2, "flood_alert": "ORANGE", "temperature_c": 39.0, "humidity_pct": 80},
+  {"district": "Shikarpur", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 65.3, "rainfall_mm_6hr": 28.7, "flood_alert": "ORANGE", "temperature_c": 38.8, "humidity_pct": 78},
+  {"district": "Sukkur", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 58.1, "rainfall_mm_6hr": 22.4, "flood_alert": "ORANGE", "temperature_c": 39.5, "humidity_pct": 76},
+  {"district": "Khairpur", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 45.0, "rainfall_mm_6hr": 18.3, "flood_alert": "GREEN", "temperature_c": 38.0, "humidity_pct": 72},
+  {"district": "Naushahro Feroze", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 52.4, "rainfall_mm_6hr": 20.1, "flood_alert": "ORANGE", "temperature_c": 37.8, "humidity_pct": 75},
+  {"district": "Mirpur Khas", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 22.5, "rainfall_mm_6hr": 8.3, "flood_alert": "GREEN", "temperature_c": 36.5, "humidity_pct": 68},
+  {"district": "Bahawalpur", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 15.2, "rainfall_mm_6hr": 5.1, "flood_alert": "GREEN", "temperature_c": 41.0, "humidity_pct": 45},
+  {"district": "Rahim Yar Khan", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 18.7, "rainfall_mm_6hr": 6.9, "flood_alert": "GREEN", "temperature_c": 40.5, "humidity_pct": 48},
+  {"district": "Muzaffargarh", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 35.8, "rainfall_mm_6hr": 14.2, "flood_alert": "GREEN", "temperature_c": 39.2, "humidity_pct": 55},
+  {"district": "Dera Ghazi Khan", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 28.4, "rainfall_mm_6hr": 11.5, "flood_alert": "GREEN", "temperature_c": 40.8, "humidity_pct": 50},
+  {"district": "Rajanpur", "timestamp": "2026-05-17T06:00:00+05:00", "rainfall_mm_24hr": 62.1, "rainfall_mm_6hr": 26.8, "flood_alert": "ORANGE", "temperature_c": 39.8, "humidity_pct": 60}
+]

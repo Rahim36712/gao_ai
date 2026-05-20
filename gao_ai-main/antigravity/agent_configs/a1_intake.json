@@ -1,0 +1,71 @@
+{
+  "_doc": "AGENT A1 - INTAKE AGENT - Gaon Guard AI",
+  "agent_id": "A1_INTAKE",
+  "version": "0.1.0",
+  "engine": "CRISIS_INTELLIGENCE",
+  "group": "A",
+  "sequence": 1,
+  "purpose": "Parse a raw complaint in Urdu/Roman Urdu/English. Extract structured crisis signals.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.0-flash",
+    "temperature": 0.1,
+    "max_output_tokens": 1024,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a crisis signal extractor for rural Pakistan. Given a complaint in Urdu, Roman Urdu, or English, extract the following fields and return ONLY valid JSON, no explanation: {location_name, district_guess, crisis_type[] (values: FLOOD/HEALTH/LIVELIHOOD/ROAD/MISSING_PERSON), affected_group (CHILDREN/ELDERLY/ALL), duration_hours (estimate), urgency_keywords[], missing_person_signal (true/false), raw_signals[]}. If any field cannot be extracted, use null. Never guess or fabricate location if not mentioned.",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "location_name":        {"type": ["string", "null"]},
+      "district_guess":       {"type": ["string", "null"]},
+      "crisis_type":          {"type": "array", "items": {"type": "string", "enum": ["FLOOD", "HEALTH", "LIVELIHOOD", "ROAD", "MISSING_PERSON"]}},
+      "affected_group":       {"type": ["string", "null"], "enum": ["CHILDREN", "ELDERLY", "ALL", null]},
+      "duration_hours":       {"type": ["number", "null"]},
+      "urgency_keywords":     {"type": "array", "items": {"type": "string"}},
+      "missing_person_signal":{"type": "boolean"},
+      "raw_signals":          {"type": "array", "items": {"type": "string"}}
+    },
+    "required": ["location_name", "crisis_type", "missing_person_signal"]
+  },
+
+  "tools_used": [
+    {
+      "name": "create_crisis_event",
+      "endpoint": "POST /api/crisis/create",
+      "description": "Creates a new crisis event in Firestore from extracted signals",
+      "when": "After successful extraction, if confidence is sufficient"
+    }
+  ],
+
+  "test_inputs": [
+    {
+      "label": "Ali Pur demo complaint (Roman Urdu)",
+      "text": "Ali Pur mein 2 din se pani khara hai, bachay diarrhea se beemar hain aur bacha nazar nahi aa raha",
+      "expected": {
+        "location_name": "Ali Pur",
+        "crisis_type": ["FLOOD", "HEALTH", "MISSING_PERSON"],
+        "duration_hours": 48,
+        "missing_person_signal": true
+      }
+    },
+    {
+      "label": "Basti Malook flood (English)",
+      "text": "Severe flooding in Basti Malook, Dadu district. Roads completely blocked. Livestock stranded.",
+      "expected": {
+        "location_name": "Basti Malook",
+        "district_guess": "Dadu",
+        "crisis_type": ["FLOOD", "ROAD", "LIVELIHOOD"],
+        "missing_person_signal": false
+      }
+    }
+  ],
+
+  "handoff": {
+    "next_agent": "A2_EVIDENCE",
+    "passes": ["location_name", "district_guess", "crisis_type", "affected_group", "duration_hours", "missing_person_signal", "raw_signals"]
+  }
+}

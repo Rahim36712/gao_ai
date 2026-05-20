@@ -1,0 +1,130 @@
+{
+  "_doc": "Gaon Guard AI - Task Execution Plan - All 9 tasks in sequence",
+  "version": "0.2.0",
+
+  "tasks": [
+    {
+      "task_id": "TASK_1",
+      "name": "A1 Intake",
+      "agent": "A1_INTAKE",
+      "type": "SEQUENTIAL",
+      "description": "Parse raw complaint (Urdu/Roman Urdu/English) into structured crisis signals",
+      "input": "Raw complaint text",
+      "output": "Structured JSON: location, crisis_type[], affected_group, duration_hours, missing_person_signal",
+      "triggers": "Incoming complaint",
+      "depends_on": [],
+      "also_triggers": ["TASK_6"]
+    },
+    {
+      "task_id": "TASK_2",
+      "name": "A2 Evidence Check",
+      "agent": "A2_EVIDENCE",
+      "type": "SEQUENTIAL",
+      "description": "Cross-check A1 output against 5 data sources (weather, roads, health, village, missing persons)",
+      "input": "A1 structured output",
+      "output": "Evidence checks with SUPPORTS/CONTRADICTS/NEUTRAL verdicts + confidence level",
+      "triggers": "A1 completes",
+      "depends_on": ["TASK_1"]
+    },
+    {
+      "task_id": "TASK_3",
+      "name": "X Conflict Check",
+      "agent": "SYSTEM",
+      "type": "CONDITIONAL",
+      "description": "Check if any A2 evidence_check has verdict CONTRADICTS. If yes, trigger TASK_3a.",
+      "input": "A2 evidence output",
+      "output": "Boolean: conflict_detected",
+      "condition": "any(check.verdict == 'CONTRADICTS' for check in a2_output.evidence_checks)",
+      "depends_on": ["TASK_2"],
+      "on_true": "TASK_3a",
+      "on_false": "TASK_4"
+    },
+    {
+      "task_id": "TASK_3a",
+      "name": "X Arbitration",
+      "agent": "X_COORDINATOR",
+      "type": "CONDITIONAL",
+      "description": "Resolve contradictions. Decide PROCEED / HOLD / REQUEST_VERIFICATION",
+      "input": "A1 output + A2 contradicting evidence",
+      "output": "Arbitration decision with reasoning, timeout, verification message",
+      "depends_on": ["TASK_3"],
+      "on_PROCEED": "TASK_4 (with must_verify flag)",
+      "on_HOLD": "Create WATCHLIST event, stop pipeline",
+      "on_REQUEST_VERIFICATION": "Send SMS, wait timeout, then fallback to TASK_4 or HOLD"
+    },
+    {
+      "task_id": "TASK_4",
+      "name": "A3 Severity Scoring",
+      "agent": "A3_SEVERITY",
+      "type": "SEQUENTIAL",
+      "description": "Apply weighted severity scoring, produce dispatch authorization",
+      "input": "A1 signals + A2 evidence (+ X arbitration if applicable)",
+      "output": "Severity score 1-5, DISPATCH_AUTHORIZED or HOLD_COORDINATOR_REVIEW",
+      "depends_on": ["TASK_2", "TASK_3a (if triggered)"]
+    },
+    {
+      "task_id": "TASK_5",
+      "name": "A4 Dispatch",
+      "agent": "A4_DISPATCH",
+      "type": "SEQUENTIAL",
+      "description": "Assign nearest available teams per department, create dispatch tickets",
+      "input": "A3 severity + authorization + available teams",
+      "output": "Dispatch tickets with ETA, escalation schedule",
+      "depends_on": ["TASK_4"],
+      "condition": "A3 authorization == DISPATCH_AUTHORIZED"
+    },
+    {
+      "task_id": "TASK_6",
+      "name": "B1-B3 Missing Person Scan",
+      "agent": "B1_SCANNER, B2_MATCHER, B3_CLUSTER",
+      "type": "PARALLEL (with TASK_5)",
+      "description": "B1 scans complaint for missing person signal. If detected, B2 cross-matches against camp registrations. B3 checks for geographic clusters.",
+      "input": "Original complaint text + missing persons DB + camp registrations",
+      "output": "Match results with scores, family alerts, cluster alerts",
+      "depends_on": ["TASK_1"],
+      "note": "Runs in parallel with TASK_5 (dispatch). B1 triggers on EVERY complaint regardless of crisis type."
+    },
+    {
+      "task_id": "TASK_7",
+      "name": "C1-C3 Aid Audit",
+      "agent": "C1_DISTRIBUTION_AUDIT, C2_PRICE_MONITOR, C3_PATTERN_DETECTOR",
+      "type": "PARALLEL (with TASK_5, TASK_6)",
+      "description": "C1 audits individual distributions. C2 monitors market prices. C3 detects fraud patterns.",
+      "input": "Aid distribution logs + market prices + beneficiary registry",
+      "output": "Audit verdicts, price gouging alerts, fraud pattern analysis",
+      "depends_on": ["TASK_5 (after dispatch creates context)"],
+      "note": "Runs after dispatch is created but in parallel with field operations"
+    },
+    {
+      "task_id": "TASK_8",
+      "name": "A4 Tracking",
+      "agent": "A4_DISPATCH",
+      "type": "MONITORING",
+      "description": "Monitor dispatch lifecycle: check for ACCEPTED at T+30, movement at T+60, escalate if needed",
+      "input": "Active dispatch tickets",
+      "output": "Status updates, reminders, escalations",
+      "depends_on": ["TASK_5"],
+      "runs_until": "All tickets reach CONFIRMED or ESCALATED"
+    },
+    {
+      "task_id": "TASK_9",
+      "name": "A4 Outcome",
+      "agent": "A4_DISPATCH",
+      "type": "SEQUENTIAL",
+      "description": "Compile final outcome report: which teams arrived, evidence uploaded, confirmations received",
+      "input": "Completed dispatch tickets",
+      "output": "Final crisis event resolution summary",
+      "depends_on": ["TASK_8"]
+    }
+  ],
+
+  "execution_diagram": [
+    "TASK_1 (A1) -----> TASK_2 (A2) ---> TASK_3 (conflict?) ---> TASK_4 (A3) ---> TASK_5 (A4 Dispatch)",
+    "                                         |                                         |",
+    "                                    TASK_3a (X) if conflict                   TASK_8 (A4 Track)",
+    "                                                                                    |",
+    "TASK_1 ---------> TASK_6 (B1->B2->B3) [PARALLEL]                             TASK_9 (A4 Outcome)",
+    "                                                                                    |",
+    "TASK_5 ---------> TASK_7 (C1->C2->C3) [PARALLEL]                              [RESOLVED]"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "_doc": "AGENT C3 - GEOVERIFY AGENT - GPS Validation - Gaon Guard AI",
+  "agent_id": "C3_GEOVERIFY",
+  "version": "0.1.0",
+  "engine": "AID_ACCOUNTABILITY",
+  "group": "C",
+  "sequence": 3,
+  "purpose": "Validate GPS coordinates of distribution event against registered village location.",
+
+  "model": {
+    "provider": "google",
+    "model_name": "gemini-2.0-flash",
+    "temperature": 0.0,
+    "max_output_tokens": 512,
+    "response_mime_type": "application/json"
+  },
+
+  "system_prompt": "You are a geographic verification agent. Given distribution GPS coordinates and the registered village GPS centroid, calculate the distance using the Haversine formula. If distance > 5km: flag LOCATION_MISMATCH. If distance > 30km: flag SEVERE_LOCATION_MISMATCH and set escalation_required: true. Return ONLY valid JSON: {gps_distribution: {lat,lng}, village_centroid: {lat,lng}, distance_km, verdict: PASS/LOCATION_MISMATCH/SEVERE_LOCATION_MISMATCH, escalation_required: true/false, mismatch_explanation}",
+
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "gps_distribution":     {"type": "object", "properties": {"lat": {"type": "number"}, "lng": {"type": "number"}}},
+      "village_centroid":     {"type": "object", "properties": {"lat": {"type": "number"}, "lng": {"type": "number"}}},
+      "distance_km":          {"type": "number"},
+      "verdict":              {"type": "string", "enum": ["PASS", "LOCATION_MISMATCH", "SEVERE_LOCATION_MISMATCH"]},
+      "escalation_required":  {"type": "boolean"},
+      "mismatch_explanation": {"type": "string"}
+    },
+    "required": ["gps_distribution", "village_centroid", "distance_km", "verdict", "escalation_required", "mismatch_explanation"]
+  },
+
+  "thresholds": {
+    "PASS": {"max_distance_km": 5},
+    "LOCATION_MISMATCH": {"min_distance_km": 5, "max_distance_km": 30},
+    "SEVERE_LOCATION_MISMATCH": {"min_distance_km": 30, "escalation_required": true}
+  },
+
+  "tools_used": [
+    {"name": "get_village", "endpoint": "GET /api/villages/{village_id}", "purpose": "Get village centroid GPS"}
+  ],
+
+  "demo_scenario": {
+    "label": "Distribution 28km from Basti Malook",
+    "input": {
+      "gps_distribution": {"lat": 27.1234, "lng": 68.5678},
+      "village_id": "VIL_002",
+      "village_centroid": {"lat": 26.7320, "lng": 67.7750}
+    },
+    "expected": {
+      "distance_km": 88,
+      "verdict": "SEVERE_LOCATION_MISMATCH",
+      "escalation_required": true
+    }
+  },
+
+  "handoff": {
+    "next_agent": null,
+    "output_to": "aid_distribution_log Firestore collection"
+  }
+}

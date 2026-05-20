@@ -1,0 +1,131 @@
+{
+  "_doc": "Gaon Guard AI — Firestore Schema Definition. All data is SYNTHETIC DEMO DATA.",
+  "_version": "0.2.0",
+
+  "collections": {
+
+    "crisis_events": {
+      "description": "Central crisis event records. Each event represents a detected or escalated crisis in a village.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Unique crisis event ID (e.g., CRISIS_001)"},
+        "status":               {"type": "string",   "enum": ["WATCHLIST", "ACTIVE", "RESOLVED", "ESCALATED"], "description": "Current lifecycle status"},
+        "location_village_id":  {"type": "string",   "description": "Reference to village ID from villages.json"},
+        "signals":              {"type": "array",    "items": "string", "description": "List of signal sources that triggered this event (e.g., WEATHER_RED, HEALTH_SPIKE, ROAD_BLOCKED)"},
+        "confidence_level":     {"type": "number",   "description": "AI confidence score 0.0–1.0"},
+        "severity_score":       {"type": "number",   "description": "Computed severity 1–10"},
+        "created_at":           {"type": "timestamp","description": "Document creation time"},
+        "updated_at":           {"type": "timestamp","description": "Last update time"},
+        "source":               {"type": "string",   "description": "Origin source (e.g., AGENT_TRIAGE, MANUAL_REPORT, SIGNAL_FUSION)"},
+        "raw_complaint_text":   {"type": "string",   "description": "Original complaint or signal text, if any"},
+        "agent_trace_ref":      {"type": "string",   "description": "Reference ID to the agent_traces document that produced this event"}
+      },
+      "indexes": [
+        {"fields": ["status", "severity_score"], "order": "DESC"},
+        {"fields": ["location_village_id", "status"]}
+      ]
+    },
+
+    "dispatch_tickets": {
+      "description": "Field team dispatch and tracking tickets linked to crisis events.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Unique ticket ID (e.g., DISP_001)"},
+        "crisis_event_id":      {"type": "string",   "description": "Reference to parent crisis_events document"},
+        "department":           {"type": "string",   "description": "Department: DISASTER, HEALTH, AGRICULTURE, RESCUE"},
+        "team_id":              {"type": "string",   "description": "Assigned team ID from teams.json"},
+        "team_name":            {"type": "string",   "description": "Human-readable team name"},
+        "status":               {"type": "string",   "enum": ["ASSIGNED", "ACCEPTED", "EN_ROUTE", "ARRIVED", "EVIDENCE_UPLOADED", "CONFIRMED", "DISPUTED", "ESCALATED"], "description": "Ticket lifecycle status"},
+        "assigned_at":          {"type": "timestamp","description": "When the ticket was assigned"},
+        "accepted_at":          {"type": "timestamp","description": "When the team accepted the dispatch"},
+        "arrived_at":           {"type": "timestamp","description": "When the team arrived on-site"},
+        "gps_checkin":          {"type": "map",      "fields": {"lat": "number", "lng": "number"}, "description": "GPS check-in coordinates from field team"},
+        "field_note":           {"type": "string",   "description": "Free-text field note from the team"},
+        "escalation_history":   {"type": "array",    "items": "map", "description": "Array of {timestamp, from_status, to_status, reason} escalation records"}
+      },
+      "indexes": [
+        {"fields": ["crisis_event_id", "status"]},
+        {"fields": ["team_id", "status"]}
+      ]
+    },
+
+    "missing_persons_live": {
+      "description": "Live missing persons tracker with AI matching state.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Case ID (e.g., MP_LIVE_001)"},
+        "name":                 {"type": "string",   "description": "Missing person's name"},
+        "age":                  {"type": "number",   "description": "Age"},
+        "gender":               {"type": "string",   "description": "Gender"},
+        "last_seen_village_id": {"type": "string",   "description": "Village ID where last seen"},
+        "last_seen_time":       {"type": "timestamp","description": "Time last seen"},
+        "description":          {"type": "string",   "description": "Physical description"},
+        "family_phone":         {"type": "string",   "description": "Family contact phone"},
+        "status":               {"type": "string",   "enum": ["OPEN", "PENDING_MATCH", "CONFIRMED_FOUND", "DECEASED"], "description": "Case status"},
+        "match_score":          {"type": "number",   "description": "AI match confidence 0.0–1.0 (null if no match)"},
+        "matched_camp_id":      {"type": "string",   "description": "Camp registration ID of potential match (null if no match)"},
+        "alert_sent_at":        {"type": "timestamp","description": "When family notification was sent (null if not sent)"}
+      },
+      "indexes": [
+        {"fields": ["status"]},
+        {"fields": ["status", "match_score"], "order": "DESC"}
+      ]
+    },
+
+    "aid_distribution_log": {
+      "description": "Audit trail for aid distribution events, with anomaly detection state.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Distribution log ID (e.g., AID_001)"},
+        "beneficiary_id":       {"type": "string",   "description": "Reference to beneficiary_registry"},
+        "village_id":           {"type": "string",   "description": "Village where distribution occurred"},
+        "officer_id":           {"type": "string",   "description": "Distributing officer/team ID"},
+        "items_distributed":    {"type": "map",      "fields": {"tents": "number", "ration_packs": "number", "cash_pkr": "number"}, "description": "Items distributed"},
+        "gps_distribution":     {"type": "map",      "fields": {"lat": "number", "lng": "number"}, "description": "GPS of distribution point"},
+        "timestamp":            {"type": "timestamp","description": "Distribution timestamp"},
+        "audit_status":         {"type": "string",   "enum": ["PENDING", "PASS", "ANOMALY", "FRAUD_RISK"], "description": "Audit engine result"},
+        "anomaly_flags":        {"type": "array",    "items": "string", "description": "List of detected anomaly codes (e.g., GPS_MISMATCH, DUPLICATE_CLAIM, PRICE_GOUGING)"},
+        "audit_brief":          {"type": "string",   "description": "Human-readable audit summary from the agent"}
+      },
+      "indexes": [
+        {"fields": ["village_id", "audit_status"]},
+        {"fields": ["audit_status", "timestamp"]}
+      ]
+    },
+
+    "agent_traces": {
+      "description": "Explainability logs from AI agents. Every agent decision is recorded here.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Trace ID (e.g., TRACE_001)"},
+        "crisis_event_id":      {"type": "string",   "description": "Related crisis event ID (nullable for non-crisis traces)"},
+        "agent_id":             {"type": "string",   "description": "Agent identifier (e.g., ENGINE_TRIAGE, ENGINE_RESPONSE, ENGINE_AUDIT)"},
+        "timestamp":            {"type": "timestamp","description": "When this trace was recorded"},
+        "input_summary":        {"type": "string",   "description": "Summary of inputs the agent received"},
+        "observations":         {"type": "string",   "description": "What the agent observed from the data"},
+        "reasoning":            {"type": "string",   "description": "Step-by-step reasoning chain"},
+        "decision":             {"type": "string",   "description": "Final decision made"},
+        "action_taken":         {"type": "string",   "description": "Action executed"},
+        "tool_calls":           {"type": "array",    "items": "map", "description": "Array of {tool_name, input, output} records"},
+        "output_summary":       {"type": "string",   "description": "Summary of final output"},
+        "error_recovery":       {"type": "string",   "description": "Error recovery notes if any failure occurred (nullable)"}
+      },
+      "indexes": [
+        {"fields": ["crisis_event_id", "timestamp"]},
+        {"fields": ["agent_id", "timestamp"]}
+      ]
+    },
+
+    "notifications_log": {
+      "description": "Log of all simulated notifications (SMS, FCM). No real messages are sent.",
+      "fields": {
+        "id":                   {"type": "string",   "description": "Notification ID (e.g., NOTIF_001)"},
+        "type":                 {"type": "string",   "enum": ["FAMILY_ALERT", "TEAM_DISPATCH", "TEAM_REMINDER", "ESCALATION", "AUDIT_FLAG"], "description": "Notification type"},
+        "recipient_phone":      {"type": "string",   "description": "Target phone number"},
+        "message":              {"type": "string",   "description": "Notification message body"},
+        "metadata":             {"type": "map",      "description": "Arbitrary metadata (crisis_event_id, team_id, etc.)"},
+        "status":               {"type": "string",   "description": "Always SIMULATED — no real SMS sent"},
+        "created_at":           {"type": "timestamp","description": "When notification was created"}
+      },
+      "indexes": [
+        {"fields": ["type", "created_at"]},
+        {"fields": ["recipient_phone", "created_at"]}
+      ]
+    }
+  }
+}

@@ -1,0 +1,3805 @@
+[
+  {
+    "_comment": "SYNTHETIC DEMO DATA \u2014 Gaon Guard AI Hackathon"
+  },
+  {
+    "id": "BEN_0001",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Ali",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7265,
+      "lng": 67.7797
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T21:47:00+05:00"
+  },
+  {
+    "id": "BEN_0002",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Khan",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7264,
+      "lng": 67.7751
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T00:35:00+05:00"
+  },
+  {
+    "id": "BEN_0003",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7338,
+      "lng": 67.7812
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T00:48:00+05:00"
+  },
+  {
+    "id": "BEN_0004",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Mallah",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7263,
+      "lng": 67.7803
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T03:05:00+05:00"
+  },
+  {
+    "id": "BEN_0005",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Shah",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7381,
+      "lng": 67.7796
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T17:07:00+05:00"
+  },
+  {
+    "id": "BEN_0006",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Marri",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7335,
+      "lng": 67.7791
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T01:42:00+05:00"
+  },
+  {
+    "id": "BEN_0007",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Soomro",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7296,
+      "lng": 67.7741
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T11:10:00+05:00"
+  },
+  {
+    "id": "BEN_0008",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Junejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7342,
+      "lng": 67.7684
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T23:15:00+05:00"
+  },
+  {
+    "id": "BEN_0009",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Solangi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7357,
+      "lng": 67.7819
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T01:14:00+05:00"
+  },
+  {
+    "id": "BEN_0010",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Solangi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7262,
+      "lng": 67.7839
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:20:00+05:00"
+  },
+  {
+    "id": "BEN_0011",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Solangi",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7273,
+      "lng": 67.7699
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T17:34:00+05:00"
+  },
+  {
+    "id": "BEN_0012",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Bozdar",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7264,
+      "lng": 67.785
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T16:31:00+05:00"
+  },
+  {
+    "id": "BEN_0013",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Chandio",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7378,
+      "lng": 67.7734
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T02:24:00+05:00"
+  },
+  {
+    "id": "BEN_0014",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Jatoi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7356,
+      "lng": 67.7673
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T17:48:00+05:00"
+  },
+  {
+    "id": "BEN_0015",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Chandio",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7252,
+      "lng": 67.7651
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T23:56:00+05:00"
+  },
+  {
+    "id": "BEN_0016",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7394,
+      "lng": 67.771
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T20:32:00+05:00"
+  },
+  {
+    "id": "BEN_0017",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Shah",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.734,
+      "lng": 67.7748
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T03:59:00+05:00"
+  },
+  {
+    "id": "BEN_0018",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Lashari",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7396,
+      "lng": 67.7839
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T02:46:00+05:00"
+  },
+  {
+    "id": "BEN_0019",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Marri",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7352,
+      "lng": 67.7839
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T05:16:00+05:00"
+  },
+  {
+    "id": "BEN_0020",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Marri",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.73,
+      "lng": 67.7784
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T11:28:00+05:00"
+  },
+  {
+    "id": "BEN_0021",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Lashari",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7288,
+      "lng": 67.7768
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T07:37:00+05:00"
+  },
+  {
+    "id": "BEN_0022",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Soomro",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7233,
+      "lng": 67.7656
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T10:04:00+05:00"
+  },
+  {
+    "id": "BEN_0023",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Palari",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7328,
+      "lng": 67.7795
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T18:36:00+05:00"
+  },
+  {
+    "id": "BEN_0024",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Otho",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7239,
+      "lng": 67.7782
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T11:27:00+05:00"
+  },
+  {
+    "id": "BEN_0025",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Mahar",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7232,
+      "lng": 67.7796
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T03:15:00+05:00"
+  },
+  {
+    "id": "BEN_0026",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Marri",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7304,
+      "lng": 67.7706
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T07:55:00+05:00"
+  },
+  {
+    "id": "BEN_0027",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Marri",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.735,
+      "lng": 67.7758
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T00:05:00+05:00"
+  },
+  {
+    "id": "BEN_0028",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7263,
+      "lng": 67.773
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T01:10:00+05:00"
+  },
+  {
+    "id": "BEN_0029",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Solangi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7277,
+      "lng": 67.7789
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T23:50:00+05:00"
+  },
+  {
+    "id": "BEN_0030",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Junejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7414,
+      "lng": 67.7766
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T17:03:00+05:00"
+  },
+  {
+    "id": "BEN_0031",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Khan",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7321,
+      "lng": 67.7821
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T05:03:00+05:00"
+  },
+  {
+    "id": "BEN_0032",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Soomro",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7355,
+      "lng": 67.7697
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T03:56:00+05:00"
+  },
+  {
+    "id": "BEN_0033",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Dhamrah",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7351,
+      "lng": 67.7763
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T10:59:00+05:00"
+  },
+  {
+    "id": "BEN_0034",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Palari",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7273,
+      "lng": 67.7676
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T20:19:00+05:00"
+  },
+  {
+    "id": "BEN_0035",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Soomro",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7344,
+      "lng": 67.7763
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T03:04:00+05:00"
+  },
+  {
+    "id": "BEN_0036",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Laghari",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7396,
+      "lng": 67.7826
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T11:18:00+05:00"
+  },
+  {
+    "id": "BEN_0037",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Marri",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7354,
+      "lng": 67.7761
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T21:06:00+05:00"
+  },
+  {
+    "id": "BEN_0038",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Chandio",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7274,
+      "lng": 67.7771
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:21:00+05:00"
+  },
+  {
+    "id": "BEN_0039",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Jatoi",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7401,
+      "lng": 67.7819
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T02:40:00+05:00"
+  },
+  {
+    "id": "BEN_0040",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Khan",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7374,
+      "lng": 67.7777
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T08:10:00+05:00"
+  },
+  {
+    "id": "BEN_0041",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Bhurgari",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7242,
+      "lng": 67.7839
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:57:00+05:00"
+  },
+  {
+    "id": "BEN_0042",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Khan",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7306,
+      "lng": 67.7658
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T11:57:00+05:00"
+  },
+  {
+    "id": "BEN_0043",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Junejo",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7291,
+      "lng": 67.7762
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T13:39:00+05:00"
+  },
+  {
+    "id": "BEN_0044",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7225,
+      "lng": 67.7797
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T10:50:00+05:00"
+  },
+  {
+    "id": "BEN_0045",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Laghari",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7297,
+      "lng": 67.7658
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T15:14:00+05:00"
+  },
+  {
+    "id": "BEN_0046",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Shah",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7265,
+      "lng": 67.7782
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T12:21:00+05:00"
+  },
+  {
+    "id": "BEN_0047",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Laghari",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7356,
+      "lng": 67.7819
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T10:01:00+05:00"
+  },
+  {
+    "id": "BEN_0048",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7228,
+      "lng": 67.7769
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T11:46:00+05:00"
+  },
+  {
+    "id": "BEN_0049",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Dhamrah",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7297,
+      "lng": 67.7765
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T08:02:00+05:00"
+  },
+  {
+    "id": "BEN_0050",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Jatoi",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7293,
+      "lng": 67.7664
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T21:58:00+05:00"
+  },
+  {
+    "id": "BEN_0051",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Palari",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7321,
+      "lng": 67.7783
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T10:25:00+05:00"
+  },
+  {
+    "id": "BEN_0052",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Bhutto",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7353,
+      "lng": 67.7726
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T23:57:00+05:00"
+  },
+  {
+    "id": "BEN_0053",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Solangi",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7281,
+      "lng": 67.7692
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T18:38:00+05:00"
+  },
+  {
+    "id": "BEN_0054",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7322,
+      "lng": 67.7809
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T23:10:00+05:00"
+  },
+  {
+    "id": "BEN_0055",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Jatoi",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7239,
+      "lng": 67.784
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T07:43:00+05:00"
+  },
+  {
+    "id": "BEN_0056",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Junejo",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7229,
+      "lng": 67.7847
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T19:54:00+05:00"
+  },
+  {
+    "id": "BEN_0057",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7364,
+      "lng": 67.7727
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T12:15:00+05:00"
+  },
+  {
+    "id": "BEN_0058",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Chandio",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7255,
+      "lng": 67.7842
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T16:29:00+05:00"
+  },
+  {
+    "id": "BEN_0059",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Lashari",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7247,
+      "lng": 67.7743
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T16:35:00+05:00"
+  },
+  {
+    "id": "BEN_0060",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Dhamrah",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7386,
+      "lng": 67.776
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T05:47:00+05:00"
+  },
+  {
+    "id": "BEN_0061",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Laghari",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7373,
+      "lng": 67.7754
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T20:15:00+05:00"
+  },
+  {
+    "id": "BEN_0062",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Soomro",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7274,
+      "lng": 67.7714
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T17:05:00+05:00"
+  },
+  {
+    "id": "BEN_0063",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Lashari",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7361,
+      "lng": 67.7663
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T13:21:00+05:00"
+  },
+  {
+    "id": "BEN_0064",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Khan",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7298,
+      "lng": 67.7804
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T22:01:00+05:00"
+  },
+  {
+    "id": "BEN_0065",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Ali",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7371,
+      "lng": 67.7821
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T13:34:00+05:00"
+  },
+  {
+    "id": "BEN_0066",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Lashari",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7317,
+      "lng": 67.7728
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T21:43:00+05:00"
+  },
+  {
+    "id": "BEN_0067",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7401,
+      "lng": 67.7768
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T21:01:00+05:00"
+  },
+  {
+    "id": "BEN_0068",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Bhutto",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.723,
+      "lng": 67.7726
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T06:29:00+05:00"
+  },
+  {
+    "id": "BEN_0069",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Solangi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.727,
+      "lng": 67.7666
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T00:47:00+05:00"
+  },
+  {
+    "id": "BEN_0070",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Lashari",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7371,
+      "lng": 67.784
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T06:53:00+05:00"
+  },
+  {
+    "id": "BEN_0071",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Lashari",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7354,
+      "lng": 67.7763
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T06:29:00+05:00"
+  },
+  {
+    "id": "BEN_0072",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7376,
+      "lng": 67.7683
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T09:06:00+05:00"
+  },
+  {
+    "id": "BEN_0073",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Bozdar",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7408,
+      "lng": 67.769
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T18:44:00+05:00"
+  },
+  {
+    "id": "BEN_0074",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Bhurgari",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7379,
+      "lng": 67.7763
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T01:22:00+05:00"
+  },
+  {
+    "id": "BEN_0075",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Soomro",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7223,
+      "lng": 67.7734
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T15:06:00+05:00"
+  },
+  {
+    "id": "BEN_0076",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Mithani",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7307,
+      "lng": 67.7797
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T20:17:00+05:00"
+  },
+  {
+    "id": "BEN_0077",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7284,
+      "lng": 67.7699
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T02:17:00+05:00"
+  },
+  {
+    "id": "BEN_0078",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7287,
+      "lng": 67.7749
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T10:11:00+05:00"
+  },
+  {
+    "id": "BEN_0079",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Shah",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7276,
+      "lng": 67.7769
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T08:35:00+05:00"
+  },
+  {
+    "id": "BEN_0080",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Junejo",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7364,
+      "lng": 67.7748
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T07:44:00+05:00"
+  },
+  {
+    "id": "BEN_0081",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7279,
+      "lng": 67.7731
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T07:19:00+05:00"
+  },
+  {
+    "id": "BEN_0082",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Marri",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7305,
+      "lng": 67.7799
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T10:22:00+05:00"
+  },
+  {
+    "id": "BEN_0083",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Narejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7244,
+      "lng": 67.7689
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T03:47:00+05:00"
+  },
+  {
+    "id": "BEN_0084",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Junejo",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7365,
+      "lng": 67.7845
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T16:38:00+05:00"
+  },
+  {
+    "id": "BEN_0085",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Junejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7292,
+      "lng": 67.771
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:34:00+05:00"
+  },
+  {
+    "id": "BEN_0086",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Khan",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7359,
+      "lng": 67.7675
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T15:06:00+05:00"
+  },
+  {
+    "id": "BEN_0087",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Otho",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7288,
+      "lng": 67.7843
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T08:55:00+05:00"
+  },
+  {
+    "id": "BEN_0088",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Soomro",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7235,
+      "lng": 67.7776
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T01:09:00+05:00"
+  },
+  {
+    "id": "BEN_0089",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Soomro",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7332,
+      "lng": 67.7733
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T19:50:00+05:00"
+  },
+  {
+    "id": "BEN_0090",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Solangi",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7279,
+      "lng": 67.7768
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T13:19:00+05:00"
+  },
+  {
+    "id": "BEN_0091",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Junejo",
+    "village_id": "VIL_002",
+    "household_size": 6,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7352,
+      "lng": 67.7681
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T05:35:00+05:00"
+  },
+  {
+    "id": "BEN_0092",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Ali",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7358,
+      "lng": 67.7744
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T01:14:00+05:00"
+  },
+  {
+    "id": "BEN_0093",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Bhurgari",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7357,
+      "lng": 67.7835
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T20:37:00+05:00"
+  },
+  {
+    "id": "BEN_0094",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Chandio",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.735,
+      "lng": 67.7832
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T04:04:00+05:00"
+  },
+  {
+    "id": "BEN_0095",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Narejo",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7308,
+      "lng": 67.7744
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T09:44:00+05:00"
+  },
+  {
+    "id": "BEN_0096",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Jatoi",
+    "village_id": "VIL_002",
+    "household_size": 11,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7308,
+      "lng": 67.777
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T13:47:00+05:00"
+  },
+  {
+    "id": "BEN_0097",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Ali",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7412,
+      "lng": 67.7817
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T18:37:00+05:00"
+  },
+  {
+    "id": "BEN_0098",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Bozdar",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7314,
+      "lng": 67.778
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T08:11:00+05:00"
+  },
+  {
+    "id": "BEN_0099",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Soomro",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7302,
+      "lng": 67.7714
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T03:54:00+05:00"
+  },
+  {
+    "id": "BEN_0100",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7353,
+      "lng": 67.773
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T17:02:00+05:00"
+  },
+  {
+    "id": "BEN_0101",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Mallah",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7243,
+      "lng": 67.7805
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T16:52:00+05:00"
+  },
+  {
+    "id": "BEN_0102",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7258,
+      "lng": 67.7722
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T15:40:00+05:00"
+  },
+  {
+    "id": "BEN_0103",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Junejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7406,
+      "lng": 67.7738
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T22:31:00+05:00"
+  },
+  {
+    "id": "BEN_0104",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Mithani",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7362,
+      "lng": 67.7712
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T00:35:00+05:00"
+  },
+  {
+    "id": "BEN_0105",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Lashari",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7409,
+      "lng": 67.778
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T04:31:00+05:00"
+  },
+  {
+    "id": "BEN_0106",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Bhurgari",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7387,
+      "lng": 67.7846
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T07:29:00+05:00"
+  },
+  {
+    "id": "BEN_0107",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Rahim Junejo",
+    "village_id": "VIL_002",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.7393,
+      "lng": 67.7705
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T13:21:00+05:00"
+  },
+  {
+    "id": "BEN_0108",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Narejo",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7393,
+      "lng": 67.7739
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T15:22:00+05:00"
+  },
+  {
+    "id": "BEN_0109",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Marri",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7407,
+      "lng": 67.7824
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T22:15:00+05:00"
+  },
+  {
+    "id": "BEN_0110",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Kalhoro",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7369,
+      "lng": 67.7791
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T12:24:00+05:00"
+  },
+  {
+    "id": "BEN_0111",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Khan",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7394,
+      "lng": 67.7825
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T14:06:00+05:00"
+  },
+  {
+    "id": "BEN_0112",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Mahar",
+    "village_id": "VIL_002",
+    "household_size": 5,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7394,
+      "lng": 67.7844
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T02:30:00+05:00"
+  },
+  {
+    "id": "BEN_0113",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Dhamrah",
+    "village_id": "VIL_002",
+    "household_size": 9,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.739,
+      "lng": 67.782
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T17:24:00+05:00"
+  },
+  {
+    "id": "BEN_0114",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Marri",
+    "village_id": "VIL_002",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 26.7267,
+      "lng": 67.7787
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T09:14:00+05:00"
+  },
+  {
+    "id": "BEN_0115",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Chandio",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7253,
+      "lng": 67.771
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T00:02:00+05:00"
+  },
+  {
+    "id": "BEN_0116",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Narejo",
+    "village_id": "VIL_002",
+    "household_size": 8,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 26.7306,
+      "lng": 67.7699
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T13:36:00+05:00"
+  },
+  {
+    "id": "BEN_0117",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7344,
+      "lng": 67.7698
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T18:09:00+05:00"
+  },
+  {
+    "id": "BEN_0118",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Mithani",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7271,
+      "lng": 67.7652
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:57:00+05:00"
+  },
+  {
+    "id": "BEN_0119",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Panhwar",
+    "village_id": "VIL_002",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 26.7409,
+      "lng": 67.7848
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T09:40:00+05:00"
+  },
+  {
+    "id": "BEN_0120",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Abbasi",
+    "village_id": "VIL_002",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 26.742,
+      "lng": 67.7821
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T03:15:00+05:00"
+  },
+  {
+    "id": "BEN_0121",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Bozdar",
+    "village_id": "VIL_001",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5484,
+      "lng": 68.2186
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T12:17:00+05:00"
+  },
+  {
+    "id": "BEN_0122",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Dhamrah",
+    "village_id": "VIL_001",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5635,
+      "lng": 68.2066
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T11:14:00+05:00"
+  },
+  {
+    "id": "BEN_0123",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Palari",
+    "village_id": "VIL_001",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5661,
+      "lng": 68.2149
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T09:50:00+05:00"
+  },
+  {
+    "id": "BEN_0124",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Bozdar",
+    "village_id": "VIL_001",
+    "household_size": 8,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5498,
+      "lng": 68.2079
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T23:26:00+05:00"
+  },
+  {
+    "id": "BEN_0125",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Bhutto",
+    "village_id": "VIL_001",
+    "household_size": 11,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5586,
+      "lng": 68.2203
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T05:16:00+05:00"
+  },
+  {
+    "id": "BEN_0126",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Mahar",
+    "village_id": "VIL_001",
+    "household_size": 8,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5574,
+      "lng": 68.2035
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T07:55:00+05:00"
+  },
+  {
+    "id": "BEN_0127",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Shah",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5483,
+      "lng": 68.2127
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:23:00+05:00"
+  },
+  {
+    "id": "BEN_0128",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Rahim Mithani",
+    "village_id": "VIL_001",
+    "household_size": 8,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5615,
+      "lng": 68.2114
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T19:56:00+05:00"
+  },
+  {
+    "id": "BEN_0129",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Mithani",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5662,
+      "lng": 68.208
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T13:07:00+05:00"
+  },
+  {
+    "id": "BEN_0130",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Khan",
+    "village_id": "VIL_001",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5503,
+      "lng": 68.2067
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T17:08:00+05:00"
+  },
+  {
+    "id": "BEN_0131",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Shah",
+    "village_id": "VIL_001",
+    "household_size": 11,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5597,
+      "lng": 68.2165
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T13:41:00+05:00"
+  },
+  {
+    "id": "BEN_0132",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Dhamrah",
+    "village_id": "VIL_001",
+    "household_size": 9,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5487,
+      "lng": 68.2094
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T14:28:00+05:00"
+  },
+  {
+    "id": "BEN_0133",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Chandio",
+    "village_id": "VIL_001",
+    "household_size": 8,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5492,
+      "lng": 68.2075
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T03:54:00+05:00"
+  },
+  {
+    "id": "BEN_0134",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Palari",
+    "village_id": "VIL_001",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.549,
+      "lng": 68.2087
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T04:50:00+05:00"
+  },
+  {
+    "id": "BEN_0135",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Marri",
+    "village_id": "VIL_001",
+    "household_size": 6,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5643,
+      "lng": 68.2067
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T04:50:00+05:00"
+  },
+  {
+    "id": "BEN_0136",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Bhutto",
+    "village_id": "VIL_001",
+    "household_size": 5,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.564,
+      "lng": 68.2042
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T00:08:00+05:00"
+  },
+  {
+    "id": "BEN_0137",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Lashari",
+    "village_id": "VIL_001",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5483,
+      "lng": 68.2073
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T04:47:00+05:00"
+  },
+  {
+    "id": "BEN_0138",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Chandio",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.557,
+      "lng": 68.2092
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T18:06:00+05:00"
+  },
+  {
+    "id": "BEN_0139",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Lashari",
+    "village_id": "VIL_001",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5625,
+      "lng": 68.2202
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T21:33:00+05:00"
+  },
+  {
+    "id": "BEN_0140",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Mithani",
+    "village_id": "VIL_001",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.568,
+      "lng": 68.2189
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T13:43:00+05:00"
+  },
+  {
+    "id": "BEN_0141",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Bhurgari",
+    "village_id": "VIL_001",
+    "household_size": 10,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.566,
+      "lng": 68.2084
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T04:04:00+05:00"
+  },
+  {
+    "id": "BEN_0142",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Dhamrah",
+    "village_id": "VIL_001",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5556,
+      "lng": 68.2139
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T09:29:00+05:00"
+  },
+  {
+    "id": "BEN_0143",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Bhurgari",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5566,
+      "lng": 68.2198
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T13:21:00+05:00"
+  },
+  {
+    "id": "BEN_0144",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Rahim Kalhoro",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5565,
+      "lng": 68.2153
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T11:09:00+05:00"
+  },
+  {
+    "id": "BEN_0145",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Soomro",
+    "village_id": "VIL_001",
+    "household_size": 4,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5566,
+      "lng": 68.2169
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T11:51:00+05:00"
+  },
+  {
+    "id": "BEN_0146",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Khan",
+    "village_id": "VIL_004",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5144,
+      "lng": 68.1872
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T21:48:00+05:00"
+  },
+  {
+    "id": "BEN_0147",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Narejo",
+    "village_id": "VIL_004",
+    "household_size": 12,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.508,
+      "lng": 68.1906
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T06:09:00+05:00"
+  },
+  {
+    "id": "BEN_0148",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Chandio",
+    "village_id": "VIL_004",
+    "household_size": 8,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5033,
+      "lng": 68.1846
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T07:51:00+05:00"
+  },
+  {
+    "id": "BEN_0149",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Dhamrah",
+    "village_id": "VIL_004",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5132,
+      "lng": 68.1922
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T22:17:00+05:00"
+  },
+  {
+    "id": "BEN_0150",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Laghari",
+    "village_id": "VIL_004",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.508,
+      "lng": 68.1826
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T04:36:00+05:00"
+  },
+  {
+    "id": "BEN_0151",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Bhutto",
+    "village_id": "VIL_004",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5159,
+      "lng": 68.1833
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T13:29:00+05:00"
+  },
+  {
+    "id": "BEN_0152",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Shah",
+    "village_id": "VIL_004",
+    "household_size": 7,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5165,
+      "lng": 68.1904
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T02:56:00+05:00"
+  },
+  {
+    "id": "BEN_0153",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Panhwar",
+    "village_id": "VIL_004",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5145,
+      "lng": 68.1844
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T21:27:00+05:00"
+  },
+  {
+    "id": "BEN_0154",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Kalhoro",
+    "village_id": "VIL_004",
+    "household_size": 7,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5161,
+      "lng": 68.1813
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T13:07:00+05:00"
+  },
+  {
+    "id": "BEN_0155",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Jatoi",
+    "village_id": "VIL_004",
+    "household_size": 7,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5054,
+      "lng": 68.1987
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T01:00:00+05:00"
+  },
+  {
+    "id": "BEN_0156",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Junejo",
+    "village_id": "VIL_004",
+    "household_size": 5,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.5068,
+      "lng": 68.1814
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T15:47:00+05:00"
+  },
+  {
+    "id": "BEN_0157",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Bhutto",
+    "village_id": "VIL_004",
+    "household_size": 9,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.511,
+      "lng": 68.1957
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T11:04:00+05:00"
+  },
+  {
+    "id": "BEN_0158",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Abdul Kalhoro",
+    "village_id": "VIL_004",
+    "household_size": 3,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5194,
+      "lng": 68.1962
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T18:27:00+05:00"
+  },
+  {
+    "id": "BEN_0159",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Narejo",
+    "village_id": "VIL_004",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5014,
+      "lng": 68.1855
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T19:29:00+05:00"
+  },
+  {
+    "id": "BEN_0160",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Kalhoro",
+    "village_id": "VIL_004",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5097,
+      "lng": 68.187
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T02:25:00+05:00"
+  },
+  {
+    "id": "BEN_0161",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Lashari",
+    "village_id": "VIL_008",
+    "household_size": 8,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 28.2725,
+      "lng": 68.4547
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T16:32:00+05:00"
+  },
+  {
+    "id": "BEN_0162",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Shah",
+    "village_id": "VIL_008",
+    "household_size": 5,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 28.2731,
+      "lng": 68.4471
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T05:38:00+05:00"
+  },
+  {
+    "id": "BEN_0163",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Panhwar",
+    "village_id": "VIL_008",
+    "household_size": 10,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 28.2861,
+      "lng": 68.4572
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:43:00+05:00"
+  },
+  {
+    "id": "BEN_0164",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Bhutto",
+    "village_id": "VIL_008",
+    "household_size": 10,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 28.2804,
+      "lng": 68.4546
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T08:37:00+05:00"
+  },
+  {
+    "id": "BEN_0165",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Jatoi",
+    "village_id": "VIL_008",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 28.2802,
+      "lng": 68.4428
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T11:53:00+05:00"
+  },
+  {
+    "id": "BEN_0166",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Mithani",
+    "village_id": "VIL_008",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 28.2803,
+      "lng": 68.4531
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T23:57:00+05:00"
+  },
+  {
+    "id": "BEN_0167",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Bozdar",
+    "village_id": "VIL_008",
+    "household_size": 6,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 28.2831,
+      "lng": 68.452
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T01:28:00+05:00"
+  },
+  {
+    "id": "BEN_0168",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Bhurgari",
+    "village_id": "VIL_008",
+    "household_size": 4,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 28.2718,
+      "lng": 68.4562
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T14:33:00+05:00"
+  },
+  {
+    "id": "BEN_0169",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Shah",
+    "village_id": "VIL_008",
+    "household_size": 7,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 28.2792,
+      "lng": 68.4488
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T19:03:00+05:00"
+  },
+  {
+    "id": "BEN_0170",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Mallah",
+    "village_id": "VIL_008",
+    "household_size": 4,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 28.2767,
+      "lng": 68.4565
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T21:58:00+05:00"
+  },
+  {
+    "id": "BEN_0171",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Soomro",
+    "village_id": "VIL_005",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.9733,
+      "lng": 69.3112
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T20:44:00+05:00"
+  },
+  {
+    "id": "BEN_0172",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Syed Dhamrah",
+    "village_id": "VIL_005",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.9662,
+      "lng": 69.3179
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T10:52:00+05:00"
+  },
+  {
+    "id": "BEN_0173",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Soomro",
+    "village_id": "VIL_005",
+    "household_size": 9,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.9554,
+      "lng": 69.3112
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T06:21:00+05:00"
+  },
+  {
+    "id": "BEN_0174",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Lashari",
+    "village_id": "VIL_005",
+    "household_size": 5,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.9565,
+      "lng": 69.3219
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T03:32:00+05:00"
+  },
+  {
+    "id": "BEN_0175",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Dhamrah",
+    "village_id": "VIL_005",
+    "household_size": 5,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.9581,
+      "lng": 69.3086
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:49:00+05:00"
+  },
+  {
+    "id": "BEN_0176",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Khan",
+    "village_id": "VIL_005",
+    "household_size": 9,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.9685,
+      "lng": 69.3098
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:39:00+05:00"
+  },
+  {
+    "id": "BEN_0177",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Lashari",
+    "village_id": "VIL_005",
+    "household_size": 11,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.9612,
+      "lng": 69.3212
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T15:57:00+05:00"
+  },
+  {
+    "id": "BEN_0178",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Palari",
+    "village_id": "VIL_005",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.9642,
+      "lng": 69.3106
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T12:32:00+05:00"
+  },
+  {
+    "id": "BEN_0179",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Junejo",
+    "village_id": "VIL_013",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.6025,
+      "lng": 68.231
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T15:55:00+05:00"
+  },
+  {
+    "id": "BEN_0180",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Chandio",
+    "village_id": "VIL_013",
+    "household_size": 11,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5907,
+      "lng": 68.2453
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T08:28:00+05:00"
+  },
+  {
+    "id": "BEN_0181",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Soomro",
+    "village_id": "VIL_013",
+    "household_size": 6,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.6027,
+      "lng": 68.2486
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T13:03:00+05:00"
+  },
+  {
+    "id": "BEN_0182",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Shah",
+    "village_id": "VIL_013",
+    "household_size": 6,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.6049,
+      "lng": 68.2375
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T00:20:00+05:00"
+  },
+  {
+    "id": "BEN_0183",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Jan Bhutto",
+    "village_id": "VIL_013",
+    "household_size": 5,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5907,
+      "lng": 68.2466
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T22:53:00+05:00"
+  },
+  {
+    "id": "BEN_0184",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Abbasi",
+    "village_id": "VIL_014",
+    "household_size": 12,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.7131,
+      "lng": 68.8484
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T06:53:00+05:00"
+  },
+  {
+    "id": "BEN_0185",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Bashir Mahar",
+    "village_id": "VIL_014",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.6972,
+      "lng": 68.8538
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T09:07:00+05:00"
+  },
+  {
+    "id": "BEN_0186",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Dost Kalhoro",
+    "village_id": "VIL_014",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.6963,
+      "lng": 68.8647
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T15:38:00+05:00"
+  },
+  {
+    "id": "BEN_0187",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Raza Bozdar",
+    "village_id": "VIL_014",
+    "household_size": 6,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.7008,
+      "lng": 68.848
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T11:15:00+05:00"
+  },
+  {
+    "id": "BEN_0188",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Mir Palari",
+    "village_id": "VIL_014",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.6964,
+      "lng": 68.8585
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T16:50:00+05:00"
+  },
+  {
+    "id": "BEN_0189",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Rahim Otho",
+    "village_id": "VIL_017",
+    "household_size": 3,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 28.3196,
+      "lng": 68.4051
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T00:22:00+05:00"
+  },
+  {
+    "id": "BEN_0190",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Qadir Lashari",
+    "village_id": "VIL_017",
+    "household_size": 4,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 28.3027,
+      "lng": 68.407
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T10:52:00+05:00"
+  },
+  {
+    "id": "BEN_0191",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nabi Bhurgari",
+    "village_id": "VIL_017",
+    "household_size": 10,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 28.3162,
+      "lng": 68.4013
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:02:00+05:00"
+  },
+  {
+    "id": "BEN_0192",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Nawab Khan",
+    "village_id": "VIL_017",
+    "household_size": 6,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 28.3063,
+      "lng": 68.4062
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T12:52:00+05:00"
+  },
+  {
+    "id": "BEN_0193",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Haji Khan",
+    "village_id": "VIL_021",
+    "household_size": 6,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.9171,
+      "lng": 69.3556
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T20:21:00+05:00"
+  },
+  {
+    "id": "BEN_0194",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Allah Shah",
+    "village_id": "VIL_021",
+    "household_size": 9,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.9249,
+      "lng": 69.3579
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T12:21:00+05:00"
+  },
+  {
+    "id": "BEN_0195",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Wali Bhurgari",
+    "village_id": "VIL_021",
+    "household_size": 10,
+    "damage_level": "MODERATE",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 10000
+    },
+    "gps_home": {
+      "lat": 27.9285,
+      "lng": 69.3504
+    },
+    "registered_by": "Red Crescent Volunteer",
+    "timestamp": "2026-05-16T02:46:00+05:00"
+  },
+  {
+    "id": "BEN_0196",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Ghulam Kalhoro",
+    "village_id": "VIL_032",
+    "household_size": 12,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 27.5709,
+      "lng": 68.1964
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T02:20:00+05:00"
+  },
+  {
+    "id": "BEN_0197",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Sardar Abbasi",
+    "village_id": "VIL_032",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 27.5633,
+      "lng": 68.1989
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T14:02:00+05:00"
+  },
+  {
+    "id": "BEN_0198",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Karim Laghari",
+    "village_id": "VIL_032",
+    "household_size": 3,
+    "damage_level": "SEVERE",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 2,
+      "cash_pkr": 25000
+    },
+    "gps_home": {
+      "lat": 27.5734,
+      "lng": 68.1981
+    },
+    "registered_by": "Army Personnel",
+    "timestamp": "2026-05-16T16:51:00+05:00"
+  },
+  {
+    "id": "BEN_0199",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Muhammad Bhutto",
+    "village_id": "VIL_019",
+    "household_size": 12,
+    "damage_level": "MINOR",
+    "entitlement": {
+      "tents": 0,
+      "ration_packs": 1,
+      "cash_pkr": 5000
+    },
+    "gps_home": {
+      "lat": 29.0947,
+      "lng": 70.3203
+    },
+    "registered_by": "NDMA Assessor",
+    "timestamp": "2026-05-16T20:23:00+05:00"
+  },
+  {
+    "id": "BEN_0200",
+    "cnic": "XXXXX-XXXXXXX-X",
+    "head_name": "Rahim Bozdar",
+    "village_id": "VIL_019",
+    "household_size": 3,
+    "damage_level": "MAJOR",
+    "entitlement": {
+      "tents": 1,
+      "ration_packs": 1,
+      "cash_pkr": 15000
+    },
+    "gps_home": {
+      "lat": 29.1076,
+      "lng": 70.338
+    },
+    "registered_by": "PDMA Field Worker",
+    "timestamp": "2026-05-16T11:28:00+05:00"
+  }
+]
